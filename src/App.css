@@ -1,0 +1,69 @@
+.skill-panel {
+    text-align: center;
+}
+.point {
+    font-weight: bold;
+    color: gold;
+}
+a.about {
+    color: gray;
+}
+a.about:hover {
+    color: white;
+}
+.is-brown {
+    background-color: #c77656;
+    border-color: #c77656;
+    color: white;
+}
+.is-brown:hover {
+    background-color: #c5643d !important;
+    border-color: #c5643d !important;
+    color: white !important;
+}
+.is-brown.is-outlined {
+    background-color: transparent;
+    border-color: #c77656;
+    color: #c77656;
+}
+.is-purple {
+    background-color: #9444c9;
+    border-color: #9444c9;
+    color: white;
+}
+.is-purple:hover {
+    background-color: #9038ca !important;
+    border-color: #9038ca !important;
+    color: white !important;
+}
+.is-purple.is-outlined {
+    background-color: transparent;
+    border-color: #9444c9;
+    color: #9444c9;
+}
+.button.is-danger.is-outlined:focus {
+    background-color: transparent;
+    color: #f14668;
+}
+.button.is-info.is-outlined:focus {
+    background-color: transparent;
+    color: #3e8ed0;
+}
+.button.is-success.is-outlined:focus {
+    background-color: transparent;
+    color: #48c78e;
+}
+.button.is-brown:focus {
+    color: white
+}
+.button.is-brown.is-outlined:focus {
+    background-color: transparent;
+    color: #c77656;
+}
+.button.is-purple:focus {
+    color: white
+}
+.button.is-purple.is-outlined:focus {
+    background-color: transparent;
+    color: #9444c9;
+}
