@@ -1,5 +1,5 @@
 import React from 'react';
-import Skill from './skill'
+import Skill from './item';
 
 class Phong extends React.Component {
 

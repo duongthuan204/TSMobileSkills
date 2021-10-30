@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
-import Skill from './skill'
+import Skill from './item'
 
 class ChuyenSinh extends React.Component {
 
@@ -20,7 +19,7 @@ class ChuyenSinh extends React.Component {
                     <Thuy skills={skills} update={update} />
                     <hr class="is-mobi" />
                 </div> : ''}
-                
+
                 {this.props.he !== 'dia' ? <div className="column">
                     <Hoa skills={skills} update={update} />
                     <hr class="is-mobi" />
@@ -28,7 +27,6 @@ class ChuyenSinh extends React.Component {
                 {this.props.he !== 'thuy' ? <div className="column">
                     <Phong skills={skills} update={update} />
                 </div> : ''}
-                <ReactTooltip />
             </div>
         );
     }
@@ -41,9 +39,7 @@ function Dia(props) {
     return (
         <div className="skill-panel container">
             <h1 className="level-1 rectangle">
-                <div data-tip="Cần học xong tuyến hệ Địa" data-effect="solid" data-delay-show="300">
-                    <Skill type="dia" skill={skills['diakhi']} update={update} />
-                </div>
+                <Skill type="dia" skill={skills['diakhi']} update={update} tooltip={'Cần học xong tuyến hệ Địa'} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
@@ -78,9 +74,7 @@ function Thuy(props) {
     return (
         <div className="skill-panel container">
             <h1 className="level-1 rectangle">
-                <div data-tip="Cần học xong tuyến hệ Thủy" data-effect="solid" data-delay-show="300">
-                    <Skill type="thuy" skill={skills['thuykhi']} update={update} />
-                </div>
+                <Skill type="thuy" skill={skills['thuykhi']} update={update} tooltip={'Cần học xong tuyến hệ Thủy'} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
@@ -115,9 +109,7 @@ function Hoa(props) {
     return (
         <div className="skill-panel container">
             <h1 className="level-1 rectangle">
-                <div data-tip="Cần học xong tuyến hệ Hỏa" data-effect="solid" data-delay-show="300">
-                    <Skill type="hoa" skill={skills['hoakhi']} update={update} />
-                </div>
+                    <Skill type="hoa" skill={skills['hoakhi']} update={update} tooltip={'Cần học xong tuyến hệ Hỏa'} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
@@ -152,9 +144,7 @@ function Phong(props) {
     return (
         <div className="skill-panel container">
             <h1 className="level-1 rectangle">
-                <div data-tip="Cần học xong tuyến hệ Phong" data-effect="solid" data-delay-show="300">
-                    <Skill type="phong" skill={skills['phongkhi']} update={update} />
-                </div>
+                    <Skill type="phong" skill={skills['phongkhi']} update={update} tooltip={'Cần học xong tuyến hệ Phong'} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>

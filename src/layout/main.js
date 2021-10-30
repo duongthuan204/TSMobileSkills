@@ -48,6 +48,21 @@ class Main extends React.Component {
         }
     }
 
+    labelTS2() {
+        switch (this.props.nghe) {
+            case 'ba':
+                return 'Bá'
+            case 'hien':
+                return 'Hiền'
+            case 'tien':
+                return 'Tiên'
+            case 'hiep':
+                return 'Hiệp'
+            default:
+                return null
+        }
+    }
+
     renderSelect() {
         const { skills, updateSkill } = this.props
         switch (this.state.select) {
@@ -62,7 +77,7 @@ class Main extends React.Component {
             case 'cs':
                 return <ChuyenSinh he={this.props.he} nghe={this.props.nghe} skills={skills} update={updateSkill} />
             case 'ts':
-                return <TaiSinh he={this.props.he} nghe={this.props.nghe} skills={skills} update={updateSkill} />
+                return <TaiSinh he={this.props.he} nghe={this.props.nghe} ball={this.props.ball} skills={skills} update={updateSkill} />
             default:
                 return null
         }
@@ -72,14 +87,20 @@ class Main extends React.Component {
         const select = this.state.select;
         return (
             <div>
-                <div className="tabs is-boxed">
+                <div className="tabs is-boxed mt-1">
                     <ul>
                         {this.props.he !== 'hoa' ? <li className={select === 'dia' ? 'is-active' : ''}><a onClick={() => this.updateSelect('dia')}>Địa</a></li> : ''}
                         {this.props.he !== 'phong' ? <li className={select === 'thuy' ? 'is-active' : ''}><a onClick={() => this.updateSelect('thuy')}>Thủy</a></li> : ''}
                         {this.props.he !== 'dia' ? <li className={select === 'hoa' ? 'is-active' : ''}><a onClick={() => this.updateSelect('hoa')}>Hỏa</a></li> : ''}
                         {this.props.he !== 'thuy' ? <li className={select === 'phong' ? 'is-active' : ''}><a onClick={() => this.updateSelect('phong')}>Phong</a></li> : ''}
-                        <li className={select === 'cs' ? 'is-active' : ''}><a onClick={() => this.updateSelect('cs')}>Chuyển Sinh</a></li>
-                        {this.props.nghe !== 'khong' ? <li className={select === 'ts' ? 'is-active' : ''}><a onClick={() => this.updateSelect('ts')}>{this.labelTS()}</a></li> : ''}
+                        <li className={select === 'cs' ? 'is-active' : ''}><a onClick={() => this.updateSelect('cs')}>
+                            <span className="is-desktop">Chuyển Sinh</span>
+                            <span className="is-mobi">CS</span>
+                        </a></li>
+                        {this.props.nghe !== 'khong' ? <li className={select === 'ts' ? 'is-active' : ''}><a onClick={() => this.updateSelect('ts')}>
+                            <span className="is-desktop">{this.labelTS()}</span>
+                            <span className="is-mobi">{this.labelTS2()}</span>
+                        </a></li> : ''}
                     </ul>
                 </div>
                 {this.renderSelect()}

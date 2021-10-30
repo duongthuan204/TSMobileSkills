@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
-import Skill from './skill'
+import Skill from './item'
 
 class TaiSinh extends React.Component {
 
@@ -15,40 +14,24 @@ class TaiSinh extends React.Component {
     }
 
     render() {
-        const { skills, update } = this.props
+        const { he, nghe, ball, skills, update } = this.props
         return (
-            <div className="columns">
-                <div className="column">
-                    <div className="skill-panel container ml-5">
-                        <h3 className="level-3 rectangle">
-                            <div data-tip="Cần học trước 1 kĩ năng Khí" data-effect="solid" data-delay-show="300">
-                                <Skill type="ts" skill={skills['daichuthien']} update={update} />
-                            </div>
-                        </h3>
-                        {this.props.nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
-                        {this.props.nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
-                        {this.props.nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
-                        {this.props.nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}
-                    </div>
-                    <hr class="is-mobi" />
+            <div className="skill-panel container">
+                {nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
+                {nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
+                {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
+                {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}
+                <hr class="my-2" />
+                <div class="button is-link is-light is-rounded my-2">
+                    Có thể học tối đa&nbsp;<b>{ball}</b>&nbsp;kĩ năng
                 </div>
-                {this.props.he !== 'hoa' ? <div className="column">
-                    <Dia skills={skills} update={update} tooltip={this.tooltip} />
-                    <hr class="is-mobi" />
-                </div> : ''}
-                {this.props.he !== 'phong' ? <div className="column">
-                    <Thuy skills={skills} update={update} tooltip={this.tooltip} />
-                    <hr class="is-mobi" />
-                </div> : ''}
-                {this.props.he !== 'dia' ? <div className="column">
-                    <Hoa skills={skills} update={update} tooltip={this.tooltip} />
-                    <hr class="is-mobi" />
-                </div> : ''}
-                {this.props.he !== 'thuy' ? <div className="column">
-                    <Phong skills={skills} update={update} tooltip={this.tooltip} />
-                </div> : ''}
-                <ReactTooltip />
-            </div>
+                <div>
+                    {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                    {he !== 'phong' ? <Thuy skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                    {he !== 'dia' ? <Hoa skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                    {he !== 'thuy' ? <Phong skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                </div>
+            </div >
         );
     }
 }
@@ -58,12 +41,8 @@ export default TaiSinh;
 function SkillTooltip(props) {
     const { type, skill, update, tooltip } = props
     return (
-        <div className="field">
-            <div className="control">
-                <div data-tip={`Cần học trước ${tooltip(skill.id)}`} data-effect="solid" data-delay-show="300">
-                    <Skill type={type} skill={skill} update={update} />
-                </div>
-            </div>
+        <div className="is-inline-block mx-1">
+            <Skill type={type} skill={skill} update={update} tooltip={`Cần học trước ${tooltip(skill.id)}`} />
         </div>
     )
 }
@@ -71,123 +50,92 @@ function SkillTooltip(props) {
 function Ba(props) {
     const { skills, update } = props
     return (
-        <ol className="level-4-wrapper">
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['bakhi']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['songcuong']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['bay']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['lucbat']} update={update} />
-                </h4>
-            </li>
-        </ol>
+        <div>
+            <Skill type="ts" skill={skills['bakhi']} update={update} />
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['songcuong']} update={update} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['bay']} update={update} />
+            </div>
+            <Skill type="ts" skill={skills['lucbat']} update={update} />
+        </div>
     );
 }
 
 function Hien(props) {
     const { skills, update } = props
     return (
-        <ol className="level-4-wrapper">
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['trithu']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['sachdong']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['dungke']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['chongdich']} update={update} />
-                </h4>
-            </li>
-        </ol>
+        <div>
+            <Skill type="ts" skill={skills['dungke']} update={update} />
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['sachdong']} update={update} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['trithu']} update={update} />
+            </div>
+            <Skill type="ts" skill={skills['chongdich']} update={update} />
+        </div>
     );
 }
 
 function Tien(props) {
     const { skills, update } = props
     return (
-        <ol className="level-4-wrapper">
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['cankhon']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['hoahuyet']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['thanhlinh']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['tienkhieu']} update={update} />
-                </h4>
-            </li>
-        </ol>
+        <div>
+            <Skill type="ts" skill={skills['tienkhieu']} update={update} />
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['cankhon']} update={update} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['hoahuyet']} update={update} />
+            </div>
+            <Skill type="ts" skill={skills['thanhlinh']} update={update} />
+        </div>
     );
 }
 
 function Hiep(props) {
     const { skills, update } = props
     return (
-        <ol className="level-4-wrapper">
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['tamnhan']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['ngungkhi']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['anhkhi']} update={update} />
-                </h4>
-            </li>
-            <li>
-                <h4 className="level-4 rectangle">
-                    <Skill type="ts" skill={skills['thienthuan']} update={update} />
-                </h4>
-            </li>
-        </ol>
+        <div>
+            <Skill type="ts" skill={skills['anhkhi']} update={update} />
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['ngungkhi']} update={update} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+            </div>
+            <div className="is-inline-block m-1">
+                <Skill type="ts" skill={skills['thienthuan']} update={update} />
+            </div>
+            <Skill type="ts" skill={skills['tamnhan']} update={update} />
+        </div>
     );
 }
 
 function Dia(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel">
+        <div className="skill-panel my-3">
+            <div className="is-inline-block mx-1">
+                <img src="./assets/ts/dia.png" width="50" height="50"></img>
+            </div>
+            <br className="is-mobi" />
             <SkillTooltip type="dia" skill={skills['chanba']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['honphu']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['thietphao']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['tinhphao']} update={update} tooltip={tooltip} />
+            <br className="is-mobi" />
             <SkillTooltip type="dia" skill={skills['chungtrao']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['xungphong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['boccam']} update={update} tooltip={tooltip} />
@@ -199,11 +147,16 @@ function Dia(props) {
 function Thuy(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel">
+        <div className="skill-panel my-3">
+            <div className="is-inline-block mx-1">
+                <img src="./assets/ts/thuy.png" width="50" height="50"></img>
+            </div>
+            <br className="is-mobi" />
             <SkillTooltip type="thuy" skill={skills['thienbang']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['suongquyen']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['mathuat']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['camlam']} update={update} tooltip={tooltip} />
+            <br className="is-mobi" />
             <SkillTooltip type="thuy" skill={skills['giaithuat']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['votuong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['nhatthiem']} update={update} tooltip={tooltip} />
@@ -215,11 +168,16 @@ function Thuy(props) {
 function Hoa(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel">
+        <div className="skill-panel my-3">
+            <div className="is-inline-block mx-1">
+                <img src="./assets/ts/hoa.png" width="50" height="50"></img>
+            </div>
+            <br className="is-mobi" />
             <SkillTooltip type="hoa" skill={skills['nhatkich']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['haohoa']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['xichlong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['trieulam']} update={update} tooltip={tooltip} />
+            <br className="is-mobi" />
             <SkillTooltip type="hoa" skill={skills['duongviem']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['phanda']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['liettram']} update={update} tooltip={tooltip} />
@@ -232,11 +190,16 @@ function Hoa(props) {
 function Phong(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel">
+        <div className="skill-panel my-3">
+            <div className="is-inline-block mx-1">
+                <img src="./assets/ts/phong.png" width="50" height="50"></img>
+            </div>
+            <br className="is-mobi" />
             <SkillTooltip type="phong" skill={skills['bangloi']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['thanly']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['phikiem']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['soncuong']} update={update} tooltip={tooltip} />
+            <br className="is-mobi" />
             <SkillTooltip type="phong" skill={skills['huthon']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['loiminh']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['thanthuat']} update={update} tooltip={tooltip} />

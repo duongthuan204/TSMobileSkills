@@ -25,8 +25,8 @@ class Head extends React.Component {
                     <div className="navbar-item">
                         <div className="mx-1">
                             <div className="select">
-                                <select disabled={this.props.diem != 0} onChange={e => this.updateHe(e.target.value)}>
-                                    <option value="dia" selected>Địa</option>
+                                <select value={this.props.he} disabled={this.props.diem != 0} onChange={e => this.updateHe(e.target.value)}>
+                                    <option value="dia">Địa</option>
                                     <option value="thuy">Thủy</option>
                                     <option value="hoa">Hỏa</option>
                                     <option value="phong">Phong</option>
@@ -35,9 +35,9 @@ class Head extends React.Component {
                         </div>
                         <div className="mx-1">
                             <div className="select">
-                                <select disabled={this.props.diem != 0} onChange={e => this.updateNghe(e.target.value)}>
+                                <select value={this.props.nghe} disabled={this.props.diem != 0} onChange={e => this.updateNghe(e.target.value)}>
                                     <option value="khong">CS</option>
-                                    <option value="ba" selected>Bá</option>
+                                    <option value="ba">Bá</option>
                                     <option value="hien">Hiền</option>
                                     <option value="tien">Tiên</option>
                                     <option value="hiep">Hiệp</option>
@@ -48,10 +48,7 @@ class Head extends React.Component {
                             <button className="button is-danger is-light" onClick={() => this.props.resetSkill()}>Reset</button>
                         </div>
                         <div className="is-desktop mx-4">
-                            Cần có <span class="point">{this.props.diem}</span> điểm kĩ năng
-                        </div>
-                        <div className="is-mobi mx-1">
-                            <span class="point">{this.props.diem}</span> điểm
+                            Cần có <span class="point-label">{this.props.diem}</span> điểm kĩ năng
                         </div>
                     </div>
                 </div>

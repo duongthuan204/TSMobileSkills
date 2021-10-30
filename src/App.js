@@ -13,6 +13,7 @@ class App extends React.Component {
       he: 'dia',
       nghe: 'ba',
       diem: 0,
+      ball: 0,
       skills: Skill.getSkills().skills
     }
     this.checkMobile()
@@ -50,14 +51,18 @@ class App extends React.Component {
     }
   }
 
-  updateSkill = (id, doublePoint) => {
-    let { diem, skills } = this.state
+  updateSkill = (id, doublePoint, type) => {
+    let { diem, ball, skills } = this.state
     let s = skills[id]
     if (s.point == 0) {
       if (this.checkSkillRequire(id)) {
         diem += (doublePoint ? s.pointRequire * 2 : s.pointRequire)
         this.setState({ diem: diem })
         s.point++
+        if (type == 'ts' && id != 'daichuthien') {
+          ball += 2
+          this.setState({ ball: ball })
+        }
       }
     } else if (s.point < s.pointMax) {
       diem++
@@ -67,6 +72,10 @@ class App extends React.Component {
       diem -= (doublePoint ? s.pointRequire * 2 : s.pointRequire) + (s.point - 1)
       this.setState({ diem: diem })
       s.point = 0
+      if (type == 'ts' && id != 'daichuthien') {
+        ball -= 2
+        this.setState({ ball: ball })
+      }
     }
     this.setState({ skills: skills })
   }
@@ -76,8 +85,7 @@ class App extends React.Component {
     for (var s in skills) {
       skills[s].point = 0
     }
-    this.setState({ skills: skills })
-    this.setState({ diem: 0 })
+    this.setState({ skills: skills, diem: 0, ball: 0 })
   }
 
   render() {
@@ -91,7 +99,8 @@ class App extends React.Component {
           </article> :
           <div>
             <Head he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} updateHe={this.updateHe} updateNghe={this.updateNghe} resetSkill={this.resetSkill} />
-            <Main he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} skills={this.state.skills} updateSkill={this.updateSkill} />
+            <div class="point-panel is-mobi">Cần có <span class="point-label">{this.state.diem}</span> điểm kĩ năng</div>
+            <Main he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} ball={this.state.ball} skills={this.state.skills} updateSkill={this.updateSkill} />
           </div>}
       </div>
     );

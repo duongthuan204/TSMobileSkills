@@ -1,7 +1,13 @@
 .skill-panel {
     text-align: center;
+    max-width: 800px !important;
 }
-.point {
+.point-panel {
+    padding: 5px 0px 10px 20px;
+    background-color: #363636;
+    color: white;
+}
+.point-label {
     font-weight: bold;
     font-size: 1.1rem;
     color: gold;
@@ -12,66 +18,40 @@ a.about {
 a.about:hover {
     color: white;
 }
-.is-brown {
-    background-color: #c77656;
-    border-color: #c77656;
+.skill-inactived {
+    filter: brightness(55%)
+}
+.skill-item {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
+    transition: all 2s ease-in-out;
+}
+.skill-item > img:active {
+    transform: scale(1.1,1.1);
+}
+.point {
+    position: absolute;
+    bottom: 4px;
+    right: 3px;
     color: white;
+    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    user-select: none;
+    font-weight: 450;
 }
-.is-brown:hover {
-    background-color: #c5643d !important;
-    border-color: #c5643d !important;
-    color: white !important;
-}
-.is-brown.is-outlined {
-    background-color: transparent;
-    border-color: #c77656;
-    color: #c77656;
-}
-.is-purple {
-    background-color: #9444c9;
-    border-color: #9444c9;
-    color: white;
-}
-.is-purple:hover {
-    background-color: #9038ca !important;
-    border-color: #9038ca !important;
-    color: white !important;
-}
-.is-purple.is-outlined {
-    background-color: transparent;
-    border-color: #9444c9;
-    color: #9444c9;
-}
-.button.is-danger.is-outlined:focus {
-    background-color: transparent !important;
-    color: #f14668 !important;
-}
-.button.is-info.is-outlined:focus {
-    background-color: transparent !important;
-    color: #3e8ed0 !important;
-}
-.button.is-success.is-outlined:focus {
-    background-color: transparent !important;
-    color: #48c78e !important;
-}
-.button.is-brown:focus {
-    color: white
-}
-.button.is-brown.is-outlined:focus {
-    background-color: transparent !important;
-    color: #c77656 !important;
-}
-.button.is-purple:focus {
-    color: white
-}
-.button.is-purple.is-outlined:focus {
-    background-color: transparent !important;
-    color: #9444c9 !important;
+.point.require {
+    top: -3px;
+    right: 3px;
+    color: gold;
 }
 
 @media screen and (max-width: 1024px) {
     .is-desktop {
         display: none !important
+    }
+    .level-0-wrapper > li::before {
+        display: none;
     }
 }
 @media screen and (min-width: 1024px) {
