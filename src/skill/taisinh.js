@@ -30,15 +30,19 @@ class TaiSinh extends React.Component {
                         {this.props.nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
                         {this.props.nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}
                     </div>
+                    <hr class="is-mobi" />
                 </div>
                 {this.props.he !== 'hoa' ? <div className="column">
                     <Dia skills={skills} update={update} tooltip={this.tooltip} />
+                    <hr class="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'phong' ? <div className="column">
                     <Thuy skills={skills} update={update} tooltip={this.tooltip} />
+                    <hr class="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'dia' ? <div className="column">
                     <Hoa skills={skills} update={update} tooltip={this.tooltip} />
+                    <hr class="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'thuy' ? <div className="column">
                     <Phong skills={skills} update={update} tooltip={this.tooltip} />
@@ -180,12 +184,12 @@ function Dia(props) {
     const { skills, update, tooltip } = props
     return (
         <div className="skill-panel">
+            <SkillTooltip type="dia" skill={skills['chanba']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="dia" skill={skills['honphu']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['thietphao']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['tinhphao']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="dia" skill={skills['chanba']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="dia" skill={skills['xungphong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['chungtrao']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="dia" skill={skills['honphu']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="dia" skill={skills['xungphong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['boccam']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['vuongsat']} update={update} tooltip={tooltip} />
         </div>
@@ -198,12 +202,12 @@ function Thuy(props) {
         <div className="skill-panel">
             <SkillTooltip type="thuy" skill={skills['thienbang']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['suongquyen']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="thuy" skill={skills['camlam']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['mathuat']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="thuy" skill={skills['camlam']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="thuy" skill={skills['giaithuat']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="thuy" skill={skills['votuong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['nhatthiem']} update={update} tooltip={tooltip} />
             <SkillTooltip type="thuy" skill={skills['lucbangvu']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="thuy" skill={skills['votuong']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="thuy" skill={skills['giaithuat']} update={update} tooltip={tooltip} />
         </div>
     );
 }
@@ -213,13 +217,13 @@ function Hoa(props) {
     return (
         <div className="skill-panel">
             <SkillTooltip type="hoa" skill={skills['nhatkich']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="hoa" skill={skills['duongviem']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['haohoa']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['xichlong']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['trieulam']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="hoa" skill={skills['duongviem']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['phanda']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="hoa" skill={skills['chanhe']} update={update} tooltip={tooltip} />
             <SkillTooltip type="hoa" skill={skills['liettram']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="hoa" skill={skills['chanhe']} update={update} tooltip={tooltip} />
         </div>
 
     );
@@ -229,14 +233,14 @@ function Phong(props) {
     const { skills, update, tooltip } = props
     return (
         <div className="skill-panel">
-            <SkillTooltip type="phong" skill={skills['thanthuat']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="phong" skill={skills['huthon']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="phong" skill={skills['phikiem']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="phong" skill={skills['chandien']} update={update} tooltip={tooltip} />
-            <SkillTooltip type="phong" skill={skills['thanly']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['bangloi']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="phong" skill={skills['thanly']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="phong" skill={skills['phikiem']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['soncuong']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="phong" skill={skills['huthon']} update={update} tooltip={tooltip} />
             <SkillTooltip type="phong" skill={skills['loiminh']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="phong" skill={skills['thanthuat']} update={update} tooltip={tooltip} />
+            <SkillTooltip type="phong" skill={skills['chandien']} update={update} tooltip={tooltip} />
         </div>
     );
 }

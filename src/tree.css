@@ -96,7 +96,7 @@ body {
 }
 
 .level-2 {
-  width: 70%;
+  width: 100%;
   margin: 0 auto 20px;
   background: var(--level-2);
 }

@@ -134,7 +134,7 @@ var Skill = {
         add('tamnhan', 'Tâm Nhãn', 1, 'daichuthien')
         add('ngungkhi', 'Ngưng Khí Hộ Thân', 1, 'daichuthien')
         add('anhkhi', 'Anh Khí Hộ Thân', 1, 'daichuthien')
-        add('thienthuan', 'Thiên Thần Thuẫn', 1, 'daichuthien')
+        add('thienthuan', 'Thiên Thần Thuẫn', 1, 'daichuthien', 5)
         //Hoa tai sinh
         add('nhatkich', 'Nhất Kích', 7, 'hoitam')
         add('duongviem', 'Dương Viêm', 10, 'bachhong')

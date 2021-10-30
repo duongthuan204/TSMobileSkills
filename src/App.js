@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isMobile: this.checkMobile(),
+      isMobile: false,
       he: 'dia',
       nghe: 'ba',
       diem: 0,
@@ -63,6 +63,10 @@ class App extends React.Component {
       diem++
       this.setState({ diem: diem })
       s.point++
+    } else if (s.point === s.pointMax) {
+      diem -= (doublePoint ? s.pointRequire * 2 : s.pointRequire) + (s.point - 1)
+      this.setState({ diem: diem })
+      s.point = 0
     }
     this.setState({ skills: skills })
   }

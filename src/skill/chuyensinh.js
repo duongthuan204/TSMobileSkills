@@ -14,12 +14,16 @@ class ChuyenSinh extends React.Component {
             <div className="columns">
                 {this.props.he !== 'hoa' ? <div className="column">
                     <Dia skills={skills} update={update} />
+                    <hr class="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'phong' ? <div className="column">
                     <Thuy skills={skills} update={update} />
+                    <hr class="is-mobi" />
                 </div> : ''}
+                
                 {this.props.he !== 'dia' ? <div className="column">
                     <Hoa skills={skills} update={update} />
+                    <hr class="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'thuy' ? <div className="column">
                     <Phong skills={skills} update={update} />

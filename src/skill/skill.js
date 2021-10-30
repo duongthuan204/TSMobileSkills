@@ -11,6 +11,10 @@ class Skill extends React.Component {
         }
     }
 
+    componentWillReceiveProps() {
+        this.setState({ doublePoint: this.checkDoublePoint() })
+    }
+
     checkDoublePoint() {
         const char = localStorage.getItem('char')
         if (this.props.type === char || this.props.type === 'ts') {

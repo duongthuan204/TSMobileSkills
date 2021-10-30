@@ -3,10 +3,11 @@
 }
 .point {
     font-weight: bold;
+    font-size: 1.1rem;
     color: gold;
 }
 a.about {
-    color: gray;
+    color: grey;
 }
 a.about:hover {
     color: white;
@@ -42,28 +43,39 @@ a.about:hover {
     color: #9444c9;
 }
 .button.is-danger.is-outlined:focus {
-    background-color: transparent;
-    color: #f14668;
+    background-color: transparent !important;
+    color: #f14668 !important;
 }
 .button.is-info.is-outlined:focus {
-    background-color: transparent;
-    color: #3e8ed0;
+    background-color: transparent !important;
+    color: #3e8ed0 !important;
 }
 .button.is-success.is-outlined:focus {
-    background-color: transparent;
-    color: #48c78e;
+    background-color: transparent !important;
+    color: #48c78e !important;
 }
 .button.is-brown:focus {
     color: white
 }
 .button.is-brown.is-outlined:focus {
-    background-color: transparent;
-    color: #c77656;
+    background-color: transparent !important;
+    color: #c77656 !important;
 }
 .button.is-purple:focus {
     color: white
 }
 .button.is-purple.is-outlined:focus {
-    background-color: transparent;
-    color: #9444c9;
+    background-color: transparent !important;
+    color: #9444c9 !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .is-desktop {
+        display: none !important
+    }
+}
+@media screen and (min-width: 1024px) {
+    .is-mobi {
+        display: none !important
+    }
 }
