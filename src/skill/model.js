@@ -1,4 +1,4 @@
-var Skill = {
+var Model = {
     getSkills: function () {
         function checkMax(max) {
             if (max > 0) return max
@@ -171,13 +171,47 @@ var Skill = {
         add('bangloi', 'Băng Lôi', 11, 'phongcuon')
         add('soncuong', 'Sơn Cương', 9, 'huyenanh')
         add('loiminh', 'Lôi Minh', 11, 'phongthan')
-
-        //add('', '', 0, '')
-
-        return {
-            skills
+        return { skills }
+    },
+    getQuick: function () {
+        function add(id, arr) {
+            let skill = {
+                [id]: arr
+            }
+            quick = { ...quick, ...skill }
         }
+        var quick = {}
+        add('bachhong', ['phonghoa', 'hoatien', 'hoitam', 'hoakiem', 'cuongdiem'])
+        add('lieunguyen', ['phonghoa', 'liethoa', 'hoaluan', 'phonghoaluan', 'batdien'])
+        add('tamvi', ['phonghoa', 'liethoa', 'hoacau', 'vudieu', 'hoalong'])
+        add('bangphong', ['nuocngap', 'bangkiem', 'dungtuyen', 'hongthuy', 'bangda'])
+        add('tanbang', ['nuocngap', 'bangkiem', 'dungtuyen', 'hongthuy', 'bangda'])
+        add('hoisinh', ['nuocngap', 'bangtuong', 'thanhluu', 'trilieu', 'toantrilieu'])
+        add('giaitru', ['nuocngap', 'bangtuong', 'thanhluu', 'hoima', 'toanhoima'])
+        add('nguyenkhi', ['nguphong', 'lantranh', 'anminh', 'phanthan', 'phongto'])
+        add('loankich', ['nguphong', 'tuyenphong', 'cuongphong', 'huyenkich', 'lienkich'])
+        add('phongcuon', ['nguphong', 'tuyenphong', 'cuongphong', 'baophong'])
+        add('vanma', ['muada', 'cambay', 'nemda', 'phisa'])
+        add('longtroi', ['muada', 'cambay', 'nemda', 'phisa'])
+        add('thaison', ['muada', 'cambay', 'nemda', 'dalan'])
+        add('kinh', ['muada', 'loimoc', 'caytinh', 'dianha', 'ketgioi'])
+        add('giaikinh', ['muada', 'loimoc', 'caytinh', 'dianha', 'ketgioi'])
+        add('giaikg', ['muada', 'loimoc', 'caytinh', 'dianha'])
+        return { quick }
+    },
+    getInitData: function () {
+        var initData = {
+            isMobile: false,
+            he: 'dia',
+            nghe: 'ba',
+            diem: 0,
+            learn: 0,
+            ball: 0,
+            skills: this.getSkills().skills,
+            quick: this.getQuick().quick
+        }
+        return { initData }
     }
 }
 
-export default Skill
+export default Model

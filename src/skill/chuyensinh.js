@@ -1,11 +1,7 @@
 import React from 'react';
-import Skill from './item'
+import Skill from './skill'
 
 class ChuyenSinh extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         const { skills, update } = this.props
@@ -13,16 +9,16 @@ class ChuyenSinh extends React.Component {
             <div className="columns">
                 {this.props.he !== 'hoa' ? <div className="column">
                     <Dia skills={skills} update={update} />
-                    <hr class="is-mobi" />
+                    <hr className="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'phong' ? <div className="column">
                     <Thuy skills={skills} update={update} />
-                    <hr class="is-mobi" />
+                    <hr className="is-mobi" />
                 </div> : ''}
 
                 {this.props.he !== 'dia' ? <div className="column">
                     <Hoa skills={skills} update={update} />
-                    <hr class="is-mobi" />
+                    <hr className="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'thuy' ? <div className="column">
                     <Phong skills={skills} update={update} />

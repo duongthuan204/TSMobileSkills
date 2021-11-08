@@ -1,11 +1,7 @@
 import React from 'react';
-import Skill from './item'
+import Skill from './skill'
 
 class TaiSinh extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     tooltip = id => {
         const skill = this.props.skills[id]
@@ -14,16 +10,16 @@ class TaiSinh extends React.Component {
     }
 
     render() {
-        const { he, nghe, ball, skills, update } = this.props
+        const { he, nghe, learn, ball, skills, update } = this.props
         return (
             <div className="skill-panel container">
                 {nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
                 {nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
                 {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
                 {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}
-                <hr class="my-2" />
-                <div class="button is-link is-light is-rounded my-2">
-                    Có thể học tối đa&nbsp;<b>{ball}</b>&nbsp;kĩ năng
+                <hr className="my-2" />
+                <div className="button is-danger is-light is-rounded my-2">
+                    Đã học&nbsp;<b>{learn}</b>&nbsp;kĩ năng, còn lại&nbsp;<b>{ball-learn}</b>
                 </div>
                 <div>
                     {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
@@ -42,7 +38,7 @@ function SkillTooltip(props) {
     const { type, skill, update, tooltip } = props
     return (
         <div className="is-inline-block mx-1">
-            <Skill type={type} skill={skill} update={update} tooltip={`Cần học trước ${tooltip(skill.id)}`} />
+            <Skill type={type} skill={skill} update={update} tooltip={`Cần học trước ${tooltip(skill.id)}`} isBall={true} />
         </div>
     )
 }
@@ -51,17 +47,17 @@ function Ba(props) {
     const { skills, update } = props
     return (
         <div>
-            <Skill type="ts" skill={skills['bakhi']} update={update} />
+            <Skill type="nghe" skill={skills['bakhi']} update={update} />
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['songcuong']} update={update} />
+                <Skill type="nghe" skill={skills['songcuong']} update={update} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+                <Skill type="nghe" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['bay']} update={update} />
+                <Skill type="nghe" skill={skills['bay']} update={update} />
             </div>
-            <Skill type="ts" skill={skills['lucbat']} update={update} />
+            <Skill type="nghe" skill={skills['lucbat']} update={update} />
         </div>
     );
 }
@@ -70,17 +66,17 @@ function Hien(props) {
     const { skills, update } = props
     return (
         <div>
-            <Skill type="ts" skill={skills['dungke']} update={update} />
+            <Skill type="nghe" skill={skills['dungke']} update={update} />
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['sachdong']} update={update} />
+                <Skill type="nghe" skill={skills['sachdong']} update={update} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+                <Skill type="nghe" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['trithu']} update={update} />
+                <Skill type="nghe" skill={skills['trithu']} update={update} />
             </div>
-            <Skill type="ts" skill={skills['chongdich']} update={update} />
+            <Skill type="nghe" skill={skills['chongdich']} update={update} />
         </div>
     );
 }
@@ -89,17 +85,17 @@ function Tien(props) {
     const { skills, update } = props
     return (
         <div>
-            <Skill type="ts" skill={skills['tienkhieu']} update={update} />
+            <Skill type="nghe" skill={skills['tienkhieu']} update={update} />
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['cankhon']} update={update} />
+                <Skill type="nghe" skill={skills['cankhon']} update={update} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+                <Skill type="nghe" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['hoahuyet']} update={update} />
+                <Skill type="nghe" skill={skills['hoahuyet']} update={update} />
             </div>
-            <Skill type="ts" skill={skills['thanhlinh']} update={update} />
+            <Skill type="nghe" skill={skills['thanhlinh']} update={update} />
         </div>
     );
 }
@@ -108,17 +104,17 @@ function Hiep(props) {
     const { skills, update } = props
     return (
         <div>
-            <Skill type="ts" skill={skills['anhkhi']} update={update} />
+            <Skill type="nghe" skill={skills['anhkhi']} update={update} />
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['ngungkhi']} update={update} />
+                <Skill type="nghe" skill={skills['ngungkhi']} update={update} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
+                <Skill type="nghe" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} />
             </div>
             <div className="is-inline-block m-1">
-                <Skill type="ts" skill={skills['thienthuan']} update={update} />
+                <Skill type="nghe" skill={skills['thienthuan']} update={update} />
             </div>
-            <Skill type="ts" skill={skills['tamnhan']} update={update} />
+            <Skill type="nghe" skill={skills['tamnhan']} update={update} />
         </div>
     );
 }
@@ -128,7 +124,7 @@ function Dia(props) {
     return (
         <div className="skill-panel my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/ts/dia.png" width="50" height="50"></img>
+                <img src="./assets/nghe/dia.png" width="50" height="50" alt="dia"></img>
             </div>
             <br className="is-mobi" />
             <SkillTooltip type="dia" skill={skills['chanba']} update={update} tooltip={tooltip} />
@@ -149,7 +145,7 @@ function Thuy(props) {
     return (
         <div className="skill-panel my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/ts/thuy.png" width="50" height="50"></img>
+                <img src="./assets/nghe/thuy.png" width="50" height="50" alt="thuy"></img>
             </div>
             <br className="is-mobi" />
             <SkillTooltip type="thuy" skill={skills['thienbang']} update={update} tooltip={tooltip} />
@@ -170,7 +166,7 @@ function Hoa(props) {
     return (
         <div className="skill-panel my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/ts/hoa.png" width="50" height="50"></img>
+                <img src="./assets/nghe/hoa.png" width="50" height="50" alt="hoa"></img>
             </div>
             <br className="is-mobi" />
             <SkillTooltip type="hoa" skill={skills['nhatkich']} update={update} tooltip={tooltip} />
@@ -192,7 +188,7 @@ function Phong(props) {
     return (
         <div className="skill-panel my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/ts/phong.png" width="50" height="50"></img>
+                <img src="./assets/nghe/phong.png" width="50" height="50" alt="phong"></img>
             </div>
             <br className="is-mobi" />
             <SkillTooltip type="phong" skill={skills['bangloi']} update={update} tooltip={tooltip} />

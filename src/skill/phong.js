@@ -1,11 +1,7 @@
 import React from 'react';
-import Skill from './item';
+import Skill from './skill';
 
 class Phong extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         const { skills, update } = this.props

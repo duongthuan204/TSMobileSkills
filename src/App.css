@@ -45,6 +45,15 @@ a.about:hover {
     right: 3px;
     color: gold;
 }
+.bold {
+    font-weight: 600;
+}
+.about p, .about li {
+    font-size: .85rem
+}
+.tabs ul > li:last-child {
+    margin-left: auto;
+}
 
 @media screen and (max-width: 1024px) {
     .is-desktop {
@@ -52,6 +61,16 @@ a.about:hover {
     }
     .level-0-wrapper > li::before {
         display: none;
+    }
+    .point-panel.is-mobi {
+        position: fixed;
+        width: 100%;
+        z-index: 30;
+    }
+    .tabs-main {
+        position: absolute;
+        width: 100%;
+        margin-top: 40px;
     }
 }
 @media screen and (min-width: 1024px) {

@@ -5,13 +5,14 @@ import Hoa from '../skill/hoa';
 import Phong from '../skill/phong';
 import ChuyenSinh from '../skill/chuyensinh';
 import TaiSinh from '../skill/taisinh';
+import About from '../layout/about';
 
 class Main extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            select: 'dia',
+            select: props.he,
             he: props.he,
             nghe: props.nghe
         }
@@ -22,7 +23,7 @@ class Main extends React.Component {
             this.setState({ he: props.he })
             this.updateSelect(props.he)
         } else if (props.nghe !== this.state.nghe) {
-            if (props.nghe == 'khong' && this.state.select == 'ts') {
+            if (props.nghe === 'khong' && this.state.select === 'ts') {
                 this.updateSelect(this.state.he)
             }
             this.setState({ nghe: props.nghe })
@@ -77,17 +78,17 @@ class Main extends React.Component {
             case 'cs':
                 return <ChuyenSinh he={this.props.he} nghe={this.props.nghe} skills={skills} update={updateSkill} />
             case 'ts':
-                return <TaiSinh he={this.props.he} nghe={this.props.nghe} ball={this.props.ball} skills={skills} update={updateSkill} />
+                return <TaiSinh he={this.props.he} nghe={this.props.nghe} learn={this.props.learn} ball={this.props.ball} skills={skills} update={updateSkill} />
             default:
-                return null
+                return <About />
         }
     }
 
     render() {
         const select = this.state.select;
         return (
-            <div>
-                <div className="tabs is-boxed mt-1">
+            <div className="tabs-main">
+                <div className="tabs mt-1">
                     <ul>
                         {this.props.he !== 'hoa' ? <li className={select === 'dia' ? 'is-active' : ''}><a onClick={() => this.updateSelect('dia')}>Địa</a></li> : ''}
                         {this.props.he !== 'phong' ? <li className={select === 'thuy' ? 'is-active' : ''}><a onClick={() => this.updateSelect('thuy')}>Thủy</a></li> : ''}
@@ -101,6 +102,7 @@ class Main extends React.Component {
                             <span className="is-desktop">{this.labelTS()}</span>
                             <span className="is-mobi">{this.labelTS2()}</span>
                         </a></li> : ''}
+                        <li className={select === 'about' ? 'is-active' : ''}><a onClick={() => this.updateSelect('about')}>Hướng dẫn</a></li>
                     </ul>
                 </div>
                 {this.renderSelect()}

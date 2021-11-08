@@ -1,37 +1,35 @@
 import React from 'react';
-import Skill from './item'
+import Skill from './skill'
 
 class Hoa extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         const { skills, update } = this.props
         return (
-            <div className="skill-panel container">
-                <div className="is-desktop">
-                    <h1 className="level-1 rectangle">
-                        <Skill type="hoa" skill={skills['phonghoa']} update={update} />
-                    </h1>
-                    <ol className="level-2-wrapper">
-                        <Hoa1 skills={skills} update={update} />
-                        <Hoa2 skills={skills} update={update} />
-                    </ol>
-                </div>
-                <div className="is-mobi">
-                    <div className="columns">
-                        <div className="column">
-                            <ol>
-                                <Hoa1 skills={skills} update={update} />
-                            </ol>
-                        </div>
-                        <hr />
-                        <div className="column">
-                            <ol>
-                                <Hoa2 skills={skills} update={update} />
-                            </ol>
+            <div>
+                <div className="skill-panel container">
+                    <div className="is-desktop">
+                        <h1 className="level-1 rectangle">
+                            <Skill type="hoa" skill={skills['phonghoa']} update={update} />
+                        </h1>
+                        <ol className="level-2-wrapper">
+                            <Hoa1 skills={skills} update={update} />
+                            <Hoa2 skills={skills} update={update} />
+                        </ol>
+                    </div>
+                    <div className="is-mobi">
+                        <div className="columns">
+                            <div className="column">
+                                <ol>
+                                    <Hoa1 skills={skills} update={update} />
+                                </ol>
+                            </div>
+                            <hr />
+                            <div className="column">
+                                <ol>
+                                    <Hoa2 skills={skills} update={update} />
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
