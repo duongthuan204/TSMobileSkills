@@ -88,7 +88,7 @@ class Main extends React.Component {
         const select = this.state.select;
         return (
             <div className="tabs-main">
-                <div className="tabs mt-1">
+                <div className="tabs is-boxed mt-1">
                     <ul>
                         {this.props.he !== 'hoa' ? <li className={select === 'dia' ? 'is-active' : ''}><a onClick={() => this.updateSelect('dia')}>Địa</a></li> : ''}
                         {this.props.he !== 'phong' ? <li className={select === 'thuy' ? 'is-active' : ''}><a onClick={() => this.updateSelect('thuy')}>Thủy</a></li> : ''}
@@ -102,11 +102,16 @@ class Main extends React.Component {
                             <span className="is-desktop">{this.labelTS()}</span>
                             <span className="is-mobi">{this.labelTS2()}</span>
                         </a></li> : ''}
-                        <li className={select === 'about' ? 'is-active' : ''}><a onClick={() => this.updateSelect('about')}>Hướng dẫn</a></li>
+                        <li className={select === 'about' ? 'is-active' : ''}>
+                            <a onClick={() => this.updateSelect('about')}>
+                                <span class="icon is-mobi"><img src="./assets/icon/info.svg" alt="info"></img></span>
+                                <span class="is-desktop">Hướng dẫn</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 {this.renderSelect()}
-            </div>
+            </div >
         );
     }
 }

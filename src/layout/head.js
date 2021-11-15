@@ -19,13 +19,13 @@ class Head extends React.Component {
                         <a href="https://ts.dzogame.vn/"><img src="https://ts.dzogame.vn/Website/assets/img/web_v2/LogoTS.png" alt="logo" /></a>
                     </div>
                     <div className="navbar-item">
-                        <div className="mx-1">
+                        {/* <div className="mx-1">
                             <button className="button is-info" onClick={() => this.props.saveData()}>
                                 <span class="icon is-small">
                                     <img src="./assets/icon/save.svg" width="50" height="50" alt="save"></img>
                                 </span>
                             </button>
-                        </div>
+                        </div> */}
                         <div className="mx-1">
                             <div className="select">
                                 <select value={this.props.he} disabled={this.props.diem !== 0} onChange={e => this.updateHe(e.target.value)}>

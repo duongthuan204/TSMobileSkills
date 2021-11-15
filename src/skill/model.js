@@ -158,7 +158,7 @@ var Model = {
         add('tinhphao', 'Tinh Pháo', 10, 'phisa')
         add('chanba', 'Chấn Ba', 8, 'thaison')
         add('xungphong', 'Xung Phong', 8, 'vanma')
-        add('chungtrao', 'Chung Trạo', 12, 'kinh', 5)
+        add('chungtrao', 'Chung Trạo', 12, 'kinh')
         add('honphu', 'Hồn Phủ', 8, 'dialiet')
         add('boccam', 'Bộc Cầm', 8, 'thobang', 5)
         add('vuongsat', 'Vương Sát', 15, 'hoangtho')

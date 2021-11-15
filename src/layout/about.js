@@ -11,7 +11,7 @@ function About() {
                 <li>Mỗi kĩ năng nghề sẽ được học 2 kĩ năng tái sinh (xem như bạn đã có đủ Ball).</li>
                 <li>Muốn hủy kĩ năng đã học thì tăng max điểm rồi nhấn thêm lần nữa. Nếu đang có kĩ năng khác phụ thuộc thì chỉ có thể giảm điểm về 1.</li>
                 <li>Hỗ trợ học nhanh các kĩ năng cuối nhánh chưa chuyển sinh. Ví dụ: Bạch Hồng Quán Nhật, Kính, Hồi Sinh, Loạn Kích...</li>
-                <li>Chức năng Lưu chỉ có tác dụng lưu local, đổi trình duyệt khác sẽ mất dữ liệu.</li>
+                {/* <li>Chức năng Lưu chỉ có tác dụng lưu local, đổi trình duyệt khác sẽ mất dữ liệu.</li> */}
                 <li>Công cụ được phát triển bởi 1 cá nhân, làm cho vui, có thể có lỗi. Nếu phát hiện lỗi hoặc góp ý gì vui lòng liên hệ với mình.</li>
             </ul>
             <h5>Liên hệ</h5>

@@ -30,7 +30,9 @@ class App extends React.Component {
   }
 
   loadData() {
-    const data = JSON.parse(localStorage.getItem('data')) || Model.getInitData().initData
+    //const data = JSON.parse(localStorage.getItem('data')) || Model.getInitData().initData
+    localStorage.removeItem('data')
+    const data = Model.getInitData().initData
     localStorage.setItem('char', data.he)
     return data
   }
