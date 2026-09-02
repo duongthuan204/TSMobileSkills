@@ -104,7 +104,7 @@ class Main extends React.Component {
                         </a></li> : ''}
                         <li className={select === 'about' ? 'is-active' : ''}>
                             <a onClick={() => this.updateSelect('about')}>
-                                <span class="icon is-mobi"><img src="./assets/icon/info.svg" alt="info"></img></span>
+                                <span class="icon is-mobi"><img src="./assets/icon/question.svg" alt="info"></img></span>
                                 <span class="is-desktop">Hướng dẫn</span>
                             </a>
                         </li>

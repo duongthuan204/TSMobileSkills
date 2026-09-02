@@ -7,7 +7,7 @@ class Dia extends React.Component {
         const { skills, update } = this.props
         return (
             <div className="skill-panel container">
-                <div className="is-desktop">
+                <div>
                     <h1 className="level-1 rectangle">
                         <Skill type="dia" skill={skills['muada']} update={update} />
                     </h1>
@@ -15,8 +15,8 @@ class Dia extends React.Component {
                         <Dia1 skills={skills} update={update} />
                         <Dia2 skills={skills} update={update} />
                     </ol>
-                </div>
-                <div className="is-mobi">
+                </div>              
+                {/* <div className="is-mobi">
                     <div className="columns">
                         <div className="column">
                             <ol>
@@ -30,7 +30,7 @@ class Dia extends React.Component {
                             </ol>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }

@@ -7,7 +7,7 @@ class Thuy extends React.Component {
         const { skills, update } = this.props
         return (
             <div className="skill-panel container">
-                <div className="is-desktop">
+                <div>
                     <h1 className="level-1 rectangle">
                         <Skill type="thuy" skill={skills['nuocngap']} update={update} />
                     </h1>
@@ -16,7 +16,7 @@ class Thuy extends React.Component {
                         <Thuy2 skills={skills} update={update} />
                     </ol>
                 </div>
-                <div className="is-mobi">
+                {/* <div className="is-mobi">
                     <div className="columns">
                         <div className="column">
                             <ol>
@@ -30,7 +30,7 @@ class Thuy extends React.Component {
                             </ol>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }

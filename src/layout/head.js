@@ -15,8 +15,9 @@ class Head extends React.Component {
         return (
             <div className="navbar is-dark is-fixed-top">
                 <div className="navbar-brand">
-                    <div className="navbar-item is-desktop">
-                        <a href="https://ts.dzogame.vn/"><img src="https://ts.dzogame.vn/Website/assets/img/web_v2/LogoTS.png" alt="logo" /></a>
+                    <div className="navbar-item is-desktop logo-brand">
+                        <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer"><img src="./logo.png" alt="logo" /></a>
+                        <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">by duongthuan</a>
                     </div>
                     <div className="navbar-item">
                         {/* <div className="mx-1">
@@ -52,7 +53,7 @@ class Head extends React.Component {
                         </div>
                         <div className="is-desktop mx-4">
                             Cần có <span className="point-label">{this.props.diem}</span> điểm kĩ năng
-                        </div>
+                    </div>
                     </div>
                 </div>
                 <ReactTooltip />

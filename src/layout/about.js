@@ -1,10 +1,16 @@
 function About() {
     return (
         <div className="about box content mx-4 mb-4">
+            <img src=".\screenshot.png" alt="thuanduong" width="300" />
             <h5>Giới thiệu</h5>
-            <p>Đây là công cụ giúp tính số điểm cần có để học các kĩ năng trong game TS Mobile (Dzo Game)</p>
+            <ul>
+                <li>Tác giả: <span className="bold">Dương Minh Thuận</span></li>
+                <li>Facebook: <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">Dương Thuận</a></li>
+                <li>Email: <a href="mailto:duongthuan204@gmail.com" target="_blank" rel="noreferrer">duongthuan204@gmail.com</a></li>
+            </ul>
             <h5>Hướng dẫn</h5>
             <ul>
+                <li>Đây là công cụ giúp tính số điểm cần có để học các kĩ năng trong game TS Mobile.</li>
                 <li>Thông tin chỉ có tác dụng tham khảo, không ảnh hưởng đến dữ liệu thực tế trong game.</li>
                 <li>Sau khi bắt đầu tăng kĩ năng, sẽ khóa không cho chọn Hệ và Nghề. Bấm Reset để hủy bỏ và làm lại.</li>
                 <li>Muốn học kĩ năng nào thì cần học kĩ năng điều kiện của nó trước.</li>
@@ -13,13 +19,6 @@ function About() {
                 <li>Hỗ trợ học nhanh các kĩ năng cuối nhánh chưa chuyển sinh. Ví dụ: Bạch Hồng Quán Nhật, Kính, Hồi Sinh, Loạn Kích...</li>
                 {/* <li>Chức năng Lưu chỉ có tác dụng lưu local, đổi trình duyệt khác sẽ mất dữ liệu.</li> */}
                 <li>Công cụ được phát triển bởi 1 cá nhân, làm cho vui, có thể có lỗi. Nếu phát hiện lỗi hoặc góp ý gì vui lòng liên hệ với mình.</li>
-            </ul>
-            <h5>Liên hệ</h5>
-            <ul>
-                <li>Tác giả: <span className="bold">Dương Minh Thuận</span></li>
-                <li>Tên nhân vật: <span className="bold">Prosperous</span> (server Mã Siêu)</li>
-                <li>Facebook: <a href="https://www.facebook.com/shunbrvt/" target="_blank" rel="noreferrer">Dương Thuận</a></li>
-                <li>Email: <a href="mailto:duongthuan204@gmail.com" target="_blank" rel="noreferrer">duongthuan204@gmail.com</a></li>
             </ul>
             <h5>Ngoài lề</h5>
             <ul>

@@ -16,11 +16,18 @@ class TaiSinh extends React.Component {
                 {nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
                 {nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
                 {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
-                {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}
+                {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}              
                 <hr className="my-2" />
                 <div className="button is-danger is-light is-rounded my-2">
-                    Đã học&nbsp;<b>{learn}</b>&nbsp;kĩ năng, còn lại&nbsp;<b>{ball-learn}</b>
+                    Học kĩ năng Nghề trước để mở slot học kĩ năng Hệ
                 </div>
+                <br/>                
+                <div className="button is-info is-light is-rounded my-2">
+                    Đã học&nbsp;<b>{learn}</b>&nbsp;kĩ năng
+                </div>
+                <div className="button is-warning is-light is-rounded my-2">
+                    Có thể học thêm&nbsp;<b>{ball-learn}</b>&nbsp;kĩ năng nữa
+                </div>                
                 <div>
                     {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
                     {he !== 'phong' ? <Thuy skills={skills} update={update} tooltip={this.tooltip} /> : ''}

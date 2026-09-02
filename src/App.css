@@ -9,7 +9,7 @@
 }
 .point-label {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: gold;
 }
 a.about {
@@ -17,6 +17,18 @@ a.about {
 }
 a.about:hover {
     color: white;
+}
+.logo-brand {
+    display: flex;
+    flex-direction: column;
+}
+.logo-brand a {
+    user-select: none;
+    color: #6574F1;
+    font-size: .6rem;
+}
+.logo-brand:hover a {
+    color: #FBA858;
 }
 .skill-inactived {
     filter: brightness(55%)
@@ -51,8 +63,15 @@ a.about:hover {
 .about p, .about li {
     font-size: .85rem
 }
+.about img {
+    display: block;
+    margin: 0 auto;
+}
 .tabs ul > li:last-child {
     margin-left: auto;
+}
+.tabs-main {
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 1024px) {

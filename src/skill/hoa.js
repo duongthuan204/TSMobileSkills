@@ -8,7 +8,7 @@ class Hoa extends React.Component {
         return (
             <div>
                 <div className="skill-panel container">
-                    <div className="is-desktop">
+                    <div>
                         <h1 className="level-1 rectangle">
                             <Skill type="hoa" skill={skills['phonghoa']} update={update} />
                         </h1>
@@ -17,7 +17,7 @@ class Hoa extends React.Component {
                             <Hoa2 skills={skills} update={update} />
                         </ol>
                     </div>
-                    <div className="is-mobi">
+                    {/* <div className="is-mobi">
                         <div className="columns">
                             <div className="column">
                                 <ol>
@@ -31,7 +31,7 @@ class Hoa extends React.Component {
                                 </ol>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

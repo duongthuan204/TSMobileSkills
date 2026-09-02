@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props)
     const data = this.loadData()
     this.state = {
-      isMobile: false,
+      isLock: false,
       he: data.he,
       nghe: data.nghe,
       diem: data.diem,
@@ -165,10 +165,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.isMobile ?
-          <article className="message is-danger is-large">
+        {this.state.isLock ?
+          <article className="message is-danger is-medium">
             <div className="message-body">
-              Không hỗ trợ di động. Vui lòng xem trên máy tính.
+              Website đang tạm khóa
             </div>
           </article> :
           <div>

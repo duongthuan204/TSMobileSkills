@@ -201,7 +201,7 @@ var Model = {
     },
     getInitData: function () {
         var initData = {
-            isMobile: false,
+            isLock: false,
             he: 'dia',
             nghe: 'ba',
             diem: 0,

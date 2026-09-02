@@ -1,7 +1,7 @@
 /* RESET STYLES & HELPER CLASSES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
-  --black: #C2DEDE;
+  --black: #80B8BE;
   --gray: lightgray;
 }
 
@@ -46,7 +46,7 @@ body {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 3px;
   height: 10px;
   background: var(--black);
 }
@@ -66,7 +66,7 @@ body {
   top: -10px;
   left: 25%;
   width: 50%;
-  height: 2px;
+  height: 3px;
   background: var(--black);
 }
 
@@ -77,7 +77,7 @@ body {
   left: -10px;
   bottom: -10px;
   width: calc(100% + 10px);
-  height: 2px;
+  height: 3px;
   background: var(--black);
 }
 
@@ -91,7 +91,7 @@ body {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 3px;
   height: 10px;
   background: var(--black);
 }
@@ -108,7 +108,7 @@ body {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 3px;
   height: 10px;
   background: var(--black);
 }
@@ -121,7 +121,7 @@ body {
   left: 0%;
   transform: translate(-100%, -50%);
   width: 10px;
-  height: 2px;
+  height: 3px;
   background: var(--black);
 }
 
@@ -143,7 +143,7 @@ body {
   top: -10px;
   left: calc(25% - 5px);
   width: calc(50% + 5px);
-  height: 2px;
+  height: 3px;
   background: var(--black);
 }
 
@@ -153,7 +153,7 @@ body {
   top: 0;
   left: 50%;
   transform: translate(-50%, -100%);
-  width: 2px;
+  width: 3px;
   height: 10px;
   background: var(--black);
 }
@@ -177,7 +177,7 @@ body {
   position: absolute;
   top: -10px;
   left: -10px;
-  width: 2px;
+  width: 3px;
   height: calc(100%);
   background: var(--black);
 }
@@ -198,7 +198,7 @@ body {
   left: 0%;
   transform: translate(-100%, -50%);
   width: 10px;
-  height: 2px;
+  height: 3px;
   background: var(--black);
 }
 
@@ -209,7 +209,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 50%;
-  height: 2px;
+  height: 3px;
   background: var(--black);
 }
 
@@ -219,7 +219,7 @@ body {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 3px;
   height: 10px;
   background: var(--black);
 }
