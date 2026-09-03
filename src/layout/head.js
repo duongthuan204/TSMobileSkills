@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
 
 class Head extends React.Component {
 
@@ -15,7 +14,7 @@ class Head extends React.Component {
         return (
             <div className="navbar is-dark is-fixed-top">
                 <div className="navbar-brand">
-                    <div className="navbar-item is-desktop logo-brand">
+                    <div className="navbar-item logo-brand">
                         <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer"><img src="./logo.png" alt="logo" /></a>
                         <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">by duongthuan</a>
                     </div>
@@ -51,12 +50,11 @@ class Head extends React.Component {
                         <div className="mx-1">
                             <button className="button is-danger" onClick={() => this.props.resetSkill()}>Reset</button>
                         </div>
-                        <div className="is-desktop mx-4">
-                            Cần có <span className="point-label">{this.props.diem}</span> điểm kĩ năng
                     </div>
+                    <div className="navbar-item point-panel">
+                        Cần có&nbsp;<span className="point-label">{this.props.diem}</span>&nbsp;điểm kĩ năng
                     </div>
                 </div>
-                <ReactTooltip />
             </div>
         );
     }

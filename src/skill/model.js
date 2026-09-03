@@ -203,7 +203,7 @@ var Model = {
         var initData = {
             isLock: false,
             he: 'dia',
-            nghe: 'ba',
+            nghe: 'khong',
             diem: 0,
             learn: 0,
             ball: 0,

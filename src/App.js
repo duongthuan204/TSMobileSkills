@@ -173,7 +173,7 @@ class App extends React.Component {
           </article> :
           <div>
             <Head he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} updateHe={this.updateHe} updateNghe={this.updateNghe} resetSkill={this.resetSkill} saveData={this.saveData} />
-            <div className="point-panel is-mobi">Cần có <span className="point-label">{this.state.diem}</span> điểm kĩ năng</div>
+            {/* <div className="point-panel is-mobi">Cần có <span className="point-label">{this.state.diem}</span> điểm kĩ năng</div> */}
             <Main he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} learn={this.state.learn} ball={this.state.ball} skills={this.state.skills} updateSkill={this.updateSkill} />
           </div>}
       </div>

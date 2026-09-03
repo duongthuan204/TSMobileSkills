@@ -1,13 +1,14 @@
 import React from 'react';
 import Skill from './skill';
+import ReactTooltip from 'react-tooltip';
 
 class Thuy extends React.Component {
 
     render() {
         const { skills, update } = this.props
         return (
-            <div className="skill-panel container">
-                <div>
+            <div>
+                <div className="skill-panel container">
                     <h1 className="level-1 rectangle">
                         <Skill type="thuy" skill={skills['nuocngap']} update={update} />
                     </h1>
@@ -31,6 +32,7 @@ class Thuy extends React.Component {
                         </div>
                     </div>
                 </div> */}
+                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
         );
     }
@@ -42,9 +44,9 @@ function Thuy1(props) {
     const { skills, update } = props
     return (
         <li>
-            <h1 className="level-2 rectangle is-mobi">
+            {/* <h1 className="level-2 rectangle is-mobi">
                 <Skill type="thuy" skill={skills['nuocngap']} update={update} />
-            </h1>
+            </h1> */}
             <h1 className="level-2 rectangle">
                 <Skill type="thuy" skill={skills['bangkiem']} update={update} />
             </h1>
@@ -77,9 +79,9 @@ function Thuy2(props) {
     const { skills, update } = props
     return (
         <li>
-            <h1 className="level-2 rectangle is-mobi">
+            {/* <h1 className="level-2 rectangle is-mobi">
                 <Skill type="thuy" skill={skills['nuocngap']} update={update} />
-            </h1>
+            </h1> */}
             <h1 className="level-2 rectangle">
                 <Skill type="thuy" skill={skills['bangtuong']} update={update} />
             </h1>

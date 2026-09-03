@@ -1,6 +1,5 @@
 
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
 
 class Skill extends React.Component {
 
@@ -37,7 +36,7 @@ class Skill extends React.Component {
         const { tooltip, skill } = this.props
         let data = skill.name
         if (tooltip !== undefined) {
-            data += ('<br/>' + tooltip)
+            data += '<br/>' + tooltip
         }
         return data
     }
@@ -47,12 +46,11 @@ class Skill extends React.Component {
         const { doublePoint } = this.state
         const imgUrl = "./assets/" + type + "/" + skill.id + ".png"
         return <div>
-            <div className="skill-item" onClick={() => update(skill.id, doublePoint, type, isBall)} data-tip={this.renderTooltip()} data-multiline={true} data-effect="solid" data-delay-show="200">
+            <div className="skill-item" onClick={() => update(skill.id, doublePoint, type, isBall)} data-tip={this.renderTooltip()} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
                 <img className={skill.point < 1 ? 'skill-inactived' : ''} src={imgUrl} width="50" height="50" alt={skill.id}></img>
                 {skill.point < 1 ? <div className="point require">{this.renderPoint()}</div> :
                     <div className="point">{skill.point}</div>}
             </div>
-            <ReactTooltip />
         </div>
     }
 }

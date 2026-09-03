@@ -1,13 +1,14 @@
 import React from 'react';
 import Skill from './skill';
+import ReactTooltip from 'react-tooltip';
 
 class Dia extends React.Component {
 
     render() {
         const { skills, update } = this.props
         return (
-            <div className="skill-panel container">
-                <div>
+            <div>
+                <div className="skill-panel container skill-dia">
                     <h1 className="level-1 rectangle">
                         <Skill type="dia" skill={skills['muada']} update={update} />
                     </h1>
@@ -31,6 +32,7 @@ class Dia extends React.Component {
                         </div>
                     </div>
                 </div> */}
+                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
         );
     }
@@ -42,9 +44,9 @@ function Dia1(props) {
     const { skills, update } = props
     return (
         <li>
-            <h1 className="level-2 rectangle is-mobi">
+            {/* <h1 className="level-2 rectangle is-mobi">
                 <Skill type="dia" skill={skills['muada']} update={update} />
-            </h1>
+            </h1> */}
             <h1 className="level-2 rectangle">
                 <Skill type="dia" skill={skills['cambay']} update={update} />
             </h1>
@@ -86,9 +88,9 @@ function Dia2(props) {
     const { skills, update } = props
     return (
         <li>
-            <h1 className="level-2 rectangle is-mobi">
+            {/* <h1 className="level-2 rectangle is-mobi">
                 <Skill type="dia" skill={skills['muada']} update={update} />
-            </h1>
+            </h1> */}
             <h1 className="level-2 rectangle">
                 <Skill type="dia" skill={skills['loimoc']} update={update} />
             </h1>

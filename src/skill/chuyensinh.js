@@ -1,28 +1,27 @@
 import React from 'react';
 import Skill from './skill'
+import ReactTooltip from 'react-tooltip';
 
 class ChuyenSinh extends React.Component {
 
     render() {
         const { skills, update } = this.props
         return (
-            <div className="columns">
+            <div className="columns skill-chuyensinh">
                 {this.props.he !== 'hoa' ? <div className="column">
                     <Dia skills={skills} update={update} />
-                    <hr className="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'phong' ? <div className="column">
                     <Thuy skills={skills} update={update} />
-                    <hr className="is-mobi" />
                 </div> : ''}
 
                 {this.props.he !== 'dia' ? <div className="column">
                     <Hoa skills={skills} update={update} />
-                    <hr className="is-mobi" />
                 </div> : ''}
                 {this.props.he !== 'thuy' ? <div className="column">
                     <Phong skills={skills} update={update} />
                 </div> : ''}
+                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
         );
     }

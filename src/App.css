@@ -2,11 +2,6 @@
     text-align: center;
     max-width: 800px !important;
 }
-.point-panel {
-    padding: 5px 0px 10px 20px;
-    background-color: #363636;
-    color: white;
-}
 .point-label {
     font-weight: bold;
     font-size: 1.2rem;
@@ -66,6 +61,7 @@ a.about:hover {
 .about img {
     display: block;
     margin: 0 auto;
+    border-radius: 5px;
 }
 .tabs ul > li:last-child {
     margin-left: auto;
@@ -89,7 +85,42 @@ a.about:hover {
     .tabs-main {
         position: absolute;
         width: 100%;
-        margin-top: 40px;
+        margin-top: 101px;
+    }
+    .skill-panel {
+        zoom: 0.8;
+    }
+    .skill-dia {
+        margin-left: 1rem;
+    }
+    .skill-hoa {
+        margin-right: 3rem;
+    }
+    .skill-taisinh {
+        display: flex;
+        justify-content: center;
+    }
+    .about img {
+        margin-bottom: 20px;
+    }
+    .skill-chuyensinh {
+        display: flex;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .skill-chuyensinh .column {
+        padding: 0;
+    }
+    .navbar-brand {
+        display: block;
+    }
+    .navbar-item {
+        justify-content: center;
+    }
+    .point-panel {
+        padding-top: 0px;
+        padding-bottom: 10px;
     }
 }
 @media screen and (min-width: 1024px) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Skill from './skill'
+import ReactTooltip from 'react-tooltip';
 
 class Hoa extends React.Component {
 
@@ -7,8 +8,7 @@ class Hoa extends React.Component {
         const { skills, update } = this.props
         return (
             <div>
-                <div className="skill-panel container">
-                    <div>
+                <div className="skill-panel container skill-hoa">
                         <h1 className="level-1 rectangle">
                             <Skill type="hoa" skill={skills['phonghoa']} update={update} />
                         </h1>
@@ -32,7 +32,7 @@ class Hoa extends React.Component {
                             </div>
                         </div>
                     </div> */}
-                </div>
+                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
         );
     }
@@ -44,9 +44,9 @@ function Hoa1(props) {
     const { skills, update } = props
     return (
         <li>
-            <h1 className="level-2 rectangle is-mobi">
+            {/* <h1 className="level-2 rectangle is-mobi">
                 <Skill type="hoa" skill={skills['phonghoa']} update={update} />
-            </h1>
+            </h1> */}
             <h1 className="level-2 rectangle">
                 <Skill type="hoa" skill={skills['hoatien']} update={update} />
             </h1>
@@ -70,9 +70,9 @@ function Hoa2(props) {
     const { skills, update } = props
     return (
         <li>
-            <h1 className="level-2 rectangle is-mobi">
+            {/* <h1 className="level-2 rectangle is-mobi">
                 <Skill type="hoa" skill={skills['phonghoa']} update={update} />
-            </h1>
+            </h1> */}
             <h1 className="level-1 rectangle">
                 <Skill type="hoa" skill={skills['liethoa']} update={update} />
             </h1>

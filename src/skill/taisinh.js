@@ -1,5 +1,6 @@
 import React from 'react';
 import Skill from './skill'
+import ReactTooltip from 'react-tooltip';
 
 class TaiSinh extends React.Component {
 
@@ -12,29 +13,27 @@ class TaiSinh extends React.Component {
     render() {
         const { he, nghe, learn, ball, skills, update } = this.props
         return (
-            <div className="skill-panel container">
-                {nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
-                {nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
-                {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
-                {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}              
-                <hr className="my-2" />
-                <div className="button is-danger is-light is-rounded my-2">
-                    Học kĩ năng Nghề trước để mở slot học kĩ năng Hệ
+            <div>
+                <div className="skill-panel container">
+                    <div className="button is-warning is-light is-rounded my-2">
+                        Cần có&nbsp;<b>{ball/2+learn}</b>&nbsp;Ball
+                    </div>
+                    {nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
+                    {nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
+                    {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
+                    {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}              
+                    <hr className="my-2" />
+                    {ball === 0 ? <div className="button is-danger is-light is-rounded my-2">Cần học kĩ năng Nghề trước</div> : 
+                        <div className="button is-info is-light is-rounded my-2">Có thể chọn&nbsp;<b>{ball}</b>&nbsp;kĩ năng Hệ</div>}
+                    <div>
+                        {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                        {he !== 'phong' ? <Thuy skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                        {he !== 'dia' ? <Hoa skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                        {he !== 'thuy' ? <Phong skills={skills} update={update} tooltip={this.tooltip} /> : ''}
+                    </div>
                 </div>
-                <br/>                
-                <div className="button is-info is-light is-rounded my-2">
-                    Đã học&nbsp;<b>{learn}</b>&nbsp;kĩ năng
-                </div>
-                <div className="button is-warning is-light is-rounded my-2">
-                    Có thể học thêm&nbsp;<b>{ball-learn}</b>&nbsp;kĩ năng nữa
-                </div>                
-                <div>
-                    {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
-                    {he !== 'phong' ? <Thuy skills={skills} update={update} tooltip={this.tooltip} /> : ''}
-                    {he !== 'dia' ? <Hoa skills={skills} update={update} tooltip={this.tooltip} /> : ''}
-                    {he !== 'thuy' ? <Phong skills={skills} update={update} tooltip={this.tooltip} /> : ''}
-                </div>
-            </div >
+                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
+            </div>
         );
     }
 }
@@ -129,7 +128,8 @@ function Hiep(props) {
 function Dia(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel my-3">
+        <div>
+        <div className="my-3">
             <div className="is-inline-block mx-1">
                 <img src="./assets/nghe/dia.png" width="50" height="50" alt="dia"></img>
             </div>
@@ -144,13 +144,14 @@ function Dia(props) {
             <SkillTooltip type="dia" skill={skills['boccam']} update={update} tooltip={tooltip} />
             <SkillTooltip type="dia" skill={skills['vuongsat']} update={update} tooltip={tooltip} />
         </div>
+        </div>
     );
 }
 
 function Thuy(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel my-3">
+        <div className="my-3">
             <div className="is-inline-block mx-1">
                 <img src="./assets/nghe/thuy.png" width="50" height="50" alt="thuy"></img>
             </div>
@@ -171,7 +172,7 @@ function Thuy(props) {
 function Hoa(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel my-3">
+        <div className="my-3">
             <div className="is-inline-block mx-1">
                 <img src="./assets/nghe/hoa.png" width="50" height="50" alt="hoa"></img>
             </div>
@@ -193,7 +194,7 @@ function Hoa(props) {
 function Phong(props) {
     const { skills, update, tooltip } = props
     return (
-        <div className="skill-panel my-3">
+        <div className="my-3">
             <div className="is-inline-block mx-1">
                 <img src="./assets/nghe/phong.png" width="50" height="50" alt="phong"></img>
             </div>
