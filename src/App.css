@@ -5,7 +5,18 @@
 .point-label {
     font-weight: bold;
     font-size: 1.2rem;
+}
+.point-label.he-dia {
     color: gold;
+}
+.point-label.he-thuy {
+    color: aqua;
+}
+.point-label.he-hoa {
+    color: orange;
+}
+.point-label.he-phong {
+    color:  greenyellow;
 }
 a.about {
     color: grey;
@@ -19,11 +30,19 @@ a.about:hover {
 }
 .logo-brand a {
     user-select: none;
-    color: #6574F1;
     font-size: .6rem;
+    background: linear-gradient(90deg, #6574F1, #a06bff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent; /* cho Safari */
 }
 .logo-brand:hover a {
-    color: #FBA858;
+    background: linear-gradient(90deg, #4d96ff, #a06bff, #ff6b6b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent; /* cho Safari */
 }
 .skill-inactived {
     filter: brightness(55%)

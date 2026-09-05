@@ -52,7 +52,7 @@ class Head extends React.Component {
                         </div>
                     </div>
                     <div className="navbar-item point-panel">
-                        Cần có&nbsp;<span className="point-label">{this.props.diem}</span>&nbsp;điểm kĩ năng
+                        Cần có&nbsp;<span className={'point-label he-' + this.props.he}>{this.props.diem}</span>&nbsp;điểm kĩ năng
                     </div>
                 </div>
             </div>

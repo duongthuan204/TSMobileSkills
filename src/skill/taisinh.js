@@ -4,6 +4,16 @@ import ReactTooltip from 'react-tooltip';
 
 class TaiSinh extends React.Component {
 
+    componentDidMount() {
+        ReactTooltip.rebuild();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.nghe !== this.props.nghe) {
+            ReactTooltip.rebuild();
+        }
+    }
+
     tooltip = id => {
         const skill = this.props.skills[id]
         const skillRequire = this.props.skills[skill.skillRequire]
@@ -15,16 +25,17 @@ class TaiSinh extends React.Component {
         return (
             <div>
                 <div className="skill-panel container">
-                    <div className="button is-warning is-light is-rounded my-2">
-                        Cần có&nbsp;<b>{ball/2+learn}</b>&nbsp;Ball
-                    </div>
                     {nghe === 'ba' ? <Ba skills={skills} update={update} /> : ''}
                     {nghe === 'hien' ? <Hien skills={skills} update={update} /> : ''}
                     {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
-                    {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}              
+                    {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}      
                     <hr className="my-2" />
-                    {ball === 0 ? <div className="button is-danger is-light is-rounded my-2">Cần học kĩ năng Nghề trước</div> : 
-                        <div className="button is-info is-light is-rounded my-2">Có thể chọn&nbsp;<b>{ball}</b>&nbsp;kĩ năng Hệ</div>}
+                    <div className="button is-warning is-light is-rounded my-2 mx-1">
+                        Cần có&nbsp;<b>{ball/2+learn}</b>&nbsp;Ball
+                    </div>
+                    <br className="is-mobi" />
+                    {ball === 0 ? <div className="button is-danger is-light is-rounded my-2">Hãy học kĩ năng Nghề trước</div> : 
+                        <div className="button is-info is-light is-rounded my-2">Được chọn&nbsp;<b>{ball-learn}</b>&nbsp;kĩ năng Hệ</div>}
                     <div>
                         {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
                         {he !== 'phong' ? <Thuy skills={skills} update={update} tooltip={this.tooltip} /> : ''}

@@ -5,13 +5,13 @@ function About() {
             <h5>Giới thiệu</h5>
             <ul>
                 <li>Tác giả: <span className="bold">Dương Minh Thuận</span></li>
+                <li>Server Tào Tháo - TS Origin VTC / Server Mã Siêu - TS Dzo Games</li>
                 <li>Facebook: <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">Dương Thuận</a></li>
                 <li>Email: <a href="mailto:duongthuan204@gmail.com" target="_blank" rel="noreferrer">duongthuan204@gmail.com</a></li>
             </ul>
             <h5>Hướng dẫn</h5>
             <ul>
                 <li>Đây là công cụ giúp tính số điểm cần có để học các kĩ năng trong game TS Mobile.</li>
-                <li>Thông tin chỉ có tác dụng tham khảo, không ảnh hưởng đến dữ liệu thực tế trong game.</li>
                 <li>Sau khi bắt đầu tăng kĩ năng, sẽ khóa không cho chọn Hệ và Nghề. Bấm Reset để hủy bỏ và làm lại.</li>
                 <li>Muốn học kĩ năng nào thì cần học kĩ năng điều kiện của nó trước.</li>
                 <li>Mỗi kĩ năng nghề sẽ được học 2 kĩ năng tái sinh (xem như bạn đã có đủ Ball).</li>
