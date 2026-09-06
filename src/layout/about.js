@@ -5,7 +5,8 @@ function About() {
             <h5>Giới thiệu</h5>
             <ul>
                 <li>Tác giả: <span className="bold">Dương Minh Thuận</span></li>
-                <li>Server Tào Tháo - TS Origin VTC / Server Mã Siêu - TS Dzo Games</li>
+                <li>Server Tào Tháo - TS Origin VTC</li>
+                <li>Server Mã Siêu - TS Dzo Games</li>
                 <li>Facebook: <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">Dương Thuận</a></li>
                 <li>Email: <a href="mailto:duongthuan204@gmail.com" target="_blank" rel="noreferrer">duongthuan204@gmail.com</a></li>
             </ul>

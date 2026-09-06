@@ -35,7 +35,7 @@ class TaiSinh extends React.Component {
                     </div>
                     <br className="is-mobi" />
                     {ball === 0 ? <div className="button is-danger is-light is-rounded my-2">Hãy học kĩ năng Nghề trước</div> : 
-                        <div className="button is-info is-light is-rounded my-2">Còn&nbsp;<b>{ball-learn}</b>&nbsp;slot kĩ năng trống</div>}
+                        <div className={'button is-light ' + ((ball-learn)>0 ? 'is-info' : 'is-danger') + ' is-rounded my-2'}>Còn&nbsp;<b>{ball-learn}</b>&nbsp;slot kĩ năng</div>}
                     <div>
                         {he !== 'hoa' ? <Dia skills={skills} update={update} tooltip={this.tooltip} /> : ''}
                         {he !== 'phong' ? <Thuy skills={skills} update={update} tooltip={this.tooltip} /> : ''}

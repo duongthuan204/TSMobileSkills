@@ -110,10 +110,10 @@ a.about:hover {
         zoom: 0.8;
     }
     .skill-dia {
-        margin-left: 1rem;
+        padding-left: 1rem;
     }
     .skill-hoa {
-        margin-right: 3rem;
+        padding-right: 3rem;
     }
     .skill-taisinh {
         display: flex;
