@@ -5,18 +5,24 @@ import ReactTooltip from 'react-tooltip';
 class Dia extends React.Component {
 
     render() {
-        const { skills, update } = this.props
+        const { skills, update, he, ngoc } = this.props
         return (
             <div>
                 <div className="skill-panel container skill-dia">
+                    {he === 'dia' && ngoc > 1 ? <div className="button is-warning is-light is-rounded mb-5">
+                        Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Nham Quái (+<b>{skills['nhamquai'].pointRequire}</b>&nbsp;viên)
+                    </div> : ''}
                     <h1 className="level-1 rectangle">
                         <Skill type="dia" skill={skills['muada']} update={update} />
+                        {he === 'dia' ? <div className="skill-logo">
+                            <Skill type="dia" skill={skills['nhamquai']} update={update} tooltip={'Cần học thuật Triệu Gọi'} />
+                        </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-dia.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">
                         <Dia1 skills={skills} update={update} />
                         <Dia2 skills={skills} update={update} />
                     </ol>
-                </div>              
+                </div>
                 {/* <div className="is-mobi">
                     <div className="columns">
                         <div className="column">

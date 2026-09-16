@@ -1,33 +1,122 @@
+.select select,
+.select {
+    user-select: none;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge cũ */
+}
+
 .skill-panel {
     text-align: center;
     max-width: 800px !important;
 }
+
 .point-label {
     font-weight: bold;
     font-size: 1.2rem;
 }
-.point-label.he-dia {
+
+.color-dia {
     color: gold;
 }
-.point-label.he-thuy {
+
+.color-thuy {
     color: lightskyblue;
 }
-.point-label.he-hoa {
+
+.color-hoa {
     color: orange;
 }
-.point-label.he-phong {
-    color:  greenyellow;
+
+.color-phong {
+    color: greenyellow;
 }
+
+.label-hoa-hoa {
+    color: tomato;
+    text-shadow:
+        0 0 10px #ffa500,
+        0 0 15px #ffa500,
+        0 0 20px #ffa500,
+        0 0 40px #ffa500;
+}
+
+.label-thuy-thuy {
+    color: royalblue;
+    text-shadow:
+        0 0 10px #87cefa,
+        0 0 15px #87cefa,
+        0 0 20px #87cefa,
+        0 0 40px #87cefa;
+}
+
+.label-dia-dia {
+    color: darkgoldenrod;
+    text-shadow:
+        0 0 10px #ffd700,
+        0 0 15px #ffd700,
+        0 0 20px #ffd700,
+        0 0 40px #ffd700;
+}
+
+.label-phong-phong {
+    color: mediumseagreen;
+    text-shadow:
+        0 0 10px #adff2f,
+        0 0 15px #adff2f,
+        0 0 20px #adff2f,
+        0 0 40px #adff2f;
+}
+
+.label-cs-cs {
+    color: blueviolet;
+    text-shadow:
+        0 0 10px plum,
+        0 0 15px plum,
+        0 0 20px plum,
+        0 0 40px plum;
+}
+
+.label-ts-ts {
+    color: blueviolet;
+    text-shadow:
+        0 0 10px plum,
+        0 0 15px plum,
+        0 0 20px plum,
+        0 0 40px plum;
+}
+
+.about {
+    margin-top: 2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 a.about {
     color: grey;
 }
+
 a.about:hover {
     color: white;
 }
+
+.about a:hover {
+    color: #485fc7;
+    text-decoration: underline;
+}
+
+.about a:visited {
+    color: #485fc7;
+}
+
 .logo-brand {
     display: flex;
     flex-direction: column;
 }
+
 .logo-brand a {
     user-select: none;
     font-size: .6rem;
@@ -35,28 +124,66 @@ a.about:hover {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    -webkit-text-fill-color: transparent; /* cho Safari */
+    -webkit-text-fill-color: transparent;
+    /* cho Safari */
 }
+
 .logo-brand:hover a {
     background: linear-gradient(90deg, #4d96ff, #a06bff, #ff6b6b);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    -webkit-text-fill-color: transparent; /* cho Safari */
+    -webkit-text-fill-color: transparent;
+    /* cho Safari */
 }
+
+/* .brand-name {
+    margin-left: 5px;
+}
+
+.brand-name>p:first-of-type {
+    font-weight: 500;
+    font-size: .7rem;
+} */
+
 .skill-inactived {
     filter: brightness(55%)
 }
+
 .skill-item {
     position: relative;
     width: fit-content;
     margin: auto;
     cursor: pointer;
     transition: all 2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Safari, Chrome cũ */
+    -moz-user-select: none;
+    /* Firefox cũ */
+    -ms-user-select: none;
 }
-.skill-item > img:active {
-    transform: scale(1.1,1.1);
+
+.skill-item>img:active {
+    transform: scale(1.1, 1.1);
 }
+
+.skill-logo {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 25px;
+}
+
+.skill-logo-img {
+    width: 70px;
+    height: 70px;
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+}
+
 .point {
     position: absolute;
     bottom: 4px;
@@ -66,82 +193,226 @@ a.about:hover {
     user-select: none;
     font-weight: 450;
 }
+
 .point.require {
     top: -3px;
     right: 3px;
     color: gold;
+    height: fit-content;
 }
+
 .bold {
     font-weight: 600;
 }
-.about p, .about li {
-    font-size: .85rem
-}
+
 .about img {
     display: block;
     margin: 0 auto;
     border-radius: 5px;
 }
-.tabs ul > li:last-child {
+
+/* .tabs ul > li:last-child {
     margin-left: auto;
-}
+} */
+
 .tabs-main {
     margin-top: 10px;
+}
+
+.has-navbar-fixed-top:has(.lock-screen) {
+    padding-top: 0;
+}
+
+.lock-screen {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./loading.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lock-screen-text {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.skill-panel-ts {
+    display: flex;
+    justify-content: center;
+    padding-right: 40px;
+}
+
+.skill-panel-ts>div:first-of-type {
+    margin: auto;
+}
+
+/* .skill-panel {
+    animation: fadeIn 0.3s ease-in-out;
+} */
+
+.point-panel {
+    user-select: none;
+}
+
+.noti-ts.active {
+    animation: zoomPop 0.5s ease;
+}
+
+.icon-question {
+    color: gray;
+    cursor: pointer;
+    margin-left: 5px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+
+.icon-question:active {
+    color: black;
+}
+
+.navbar-end .icon-question {
+    margin-right: 5px;
+}
+
+.navbar-end .icon-question:hover {
+    color: dimgray;
+}
+
+.navbar-end .icon-question:active {
+    color: black;
+}
+
+.close-about-page {
+    position: fixed;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+.close-about-page:active {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes zoomPop {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.1);
+    }
+
+    60% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 1024px) {
     .is-desktop {
         display: none !important
     }
-    .level-0-wrapper > li::before {
+
+    /* .level-0-wrapper > li::before {
         display: none;
-    }
+    } */
     .point-panel.is-mobi {
         position: fixed;
         width: 100%;
         z-index: 30;
     }
+
     .tabs-main {
         position: absolute;
         width: 100%;
         margin-top: 101px;
     }
+
     .skill-panel {
         zoom: 0.8;
     }
-    .skill-dia {
-        padding-left: 1rem;
+
+    .skill-logo-img {
+        width: 60px;
+        height: 60px;
     }
+
+    .logo-hoa {
+        top: 43%;
+        left: 43%;
+    }
+
     .skill-hoa {
         padding-right: 3rem;
     }
+
     .skill-taisinh {
         display: flex;
         justify-content: center;
     }
-    .about img {
-        margin-bottom: 20px;
+
+    .about {
+        width: 97%;
+        margin-top: 7.5rem;
+        margin-left: auto;
+        margin-right: auto;
     }
+
+    .close-about-page {
+        zoom: 0.8;
+    }
+
     .skill-chuyensinh {
         display: flex;
         justify-content: center;
         margin-left: 10px;
         margin-right: 10px;
     }
+
     .skill-chuyensinh .column {
         padding: 0;
     }
+
     .navbar-brand {
         display: block;
     }
+
     .navbar-item {
         justify-content: center;
     }
+
     .point-panel {
         padding-top: 0px;
         padding-bottom: 10px;
     }
 }
+
 @media screen and (min-width: 1024px) {
     .is-mobi {
         display: none !important

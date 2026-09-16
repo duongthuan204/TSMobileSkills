@@ -5,12 +5,18 @@ import ReactTooltip from 'react-tooltip';
 class Phong extends React.Component {
 
     render() {
-        const { skills, update } = this.props
+        const { skills, update, he, ngoc } = this.props
         return (
             <div>
                 <div className="skill-panel container">
+                    {he === 'phong' && ngoc > 1 ? <div className="button is-success is-light is-rounded mb-5">
+                        Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Thanh Long (+<b>{skills['thanhlong'].pointRequire}</b>&nbsp;viên)
+                    </div> : ''}
                     <h1 className="level-1 rectangle">
                         <Skill type="phong" skill={skills['nguphong']} update={update} />
+                        {he === 'phong' ? <div className="skill-logo">
+                            <Skill type="phong" skill={skills['thanhlong']} update={update} tooltip={'Cần học thuật Triệu Gọi'} />
+                        </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-phong.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">
                         <Phong1 skills={skills} update={update} />

@@ -1,0 +1,97 @@
+.dialog-box {
+    position: relative;
+    max-width: 600px;
+    padding: 30px 30px 30px 10px;
+    margin: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+    background: rgba(30, 20, 90, 0.6);
+    border: 3px solid rgba(170, 130, 255, 0.9);
+    border-radius: 4px;
+    box-shadow:
+        0 0 12px rgba(170, 130, 255, 0.8),
+        inset 0 0 20px rgba(80, 40, 160, 0.6);
+
+    backdrop-filter: blur(1px);
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+    user-select: none;
+    color: white;
+    animation: scaleIn 0.3s ease-out;
+}
+
+.dialog-box a:hover {
+    color: white;
+}
+
+.dialog-box.is-lock {
+    font-size: 1.2rem;
+    width: 550px;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* viền góc kiểu double-line như trong hình */
+.dialog-box::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(200, 170, 255, 0.5);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.dialog-content {
+    display: flex;
+    align-items: center;
+    /* 2 cột canh giữa theo chiều dọc so với nhau */
+    gap: 15px;
+}
+
+.dialog-npc {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.dialog-text {
+    color: #ffe25a;
+    flex: 1;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-green {
+    color: lightgreen;
+}
+
+.modal-background,
+.dialog-box {
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .dialog-content {
+        flex-direction: column;
+    }
+
+    .dialog-box {
+        font-family: inherit;
+        font-size: .95rem;
+        padding: 20px;
+    }
+}

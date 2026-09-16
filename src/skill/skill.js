@@ -24,7 +24,8 @@ class Skill extends React.Component {
     }
 
     renderPoint() {
-        const { point, pointRequire } = this.props.skill
+        const { point, pointRequire, skillRequire } = this.props.skill
+        if (skillRequire === 'trieugoi') return null
         const { doublePoint } = this.state
         if (point === 0) {
             return doublePoint ? pointRequire * 2 : pointRequire
@@ -46,10 +47,9 @@ class Skill extends React.Component {
         const { doublePoint } = this.state
         const imgUrl = "./assets/" + type + "/" + skill.id + ".png"
         return <div>
-            <div className="skill-item" onClick={() => update(skill.id, doublePoint, type, isBall)} data-tip={this.renderTooltip()} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
+            <div className="skill-item" onClick={() => update(skill.id, doublePoint, type, isBall, false)} onDoubleClick={() => update(skill.id, doublePoint, type, isBall, true)} data-tip={this.renderTooltip()} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
                 <img className={skill.point < 1 ? 'skill-inactived' : ''} src={imgUrl} width="50" height="50" alt={skill.id}></img>
-                {skill.point < 1 ? <div className="point require">{this.renderPoint()}</div> :
-                    <div className="point">{skill.point}</div>}
+                {skill.point > 0 ? <div className="point">{skill.point}</div> : <div className="point require">{this.renderPoint()}</div>}
             </div>
         </div>
     }

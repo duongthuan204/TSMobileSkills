@@ -20,6 +20,7 @@ var Model = {
         }
         var skills = {}
         //Hoa
+        add('phunghoang', 'Phụng Hoàng', 0, 'trieugoi')
         add('phonghoa', 'Phóng Hỏa', 1, 'khong')
         add('hoatien', 'Hỏa Tiễn', 4, 'phonghoa')
         add('hoitam', 'Hội Tâm Nhất Kích', 7, 'hoatien')
@@ -36,6 +37,7 @@ var Model = {
         add('hoalong', 'Hỏa Long', 12, 'vudieu')
         add('tamvi', 'Tam Vị Chân Hỏa', 16, 'hoalong')
         //Thuy
+        add('thuythan', 'Thủy Thần', 0, 'trieugoi')
         add('nuocngap', 'Nước Ngập', 1, 'khong')
         add('bangkiem', 'Băng Kiếm', 3, 'nuocngap')
         add('dungtuyen', 'Dũng Tuyền', 5, 'bangkiem')
@@ -52,6 +54,7 @@ var Model = {
         add('toanhoima', 'Toàn Hồi Ma', 9, 'hoima')
         add('giaitru', 'Giải Trừ', 12, 'toanhoima', 1)
         //Dia
+        add('nhamquai', 'Nham Quái', 0, 'trieugoi')
         add('muada', 'Mưa Đá', 1, 'khong')
         add('cambay', 'Cạm Bẫy', 3, 'muada')
         add('nemda', 'Ném Đá', 7, 'cambay')
@@ -68,6 +71,7 @@ var Model = {
         add('kinh', 'Kính', 18, 'ketgioi', 5)
         add('giaikinh', 'Giải Kính', 1, 'ketgioi', 1)
         //Phong
+        add('thanhlong', 'Thanh Long', 0, 'trieugoi')
         add('nguphong', 'Ngự Phong', 1, 'khong')
         add('lantranh', 'Lẩn Tránh', 4, 'nguphong', 5)
         add('anminh', 'Ẩn Mình', 7, 'lantranh', 5)
@@ -197,6 +201,15 @@ var Model = {
         add('kinh', ['muada', 'loimoc', 'caytinh', 'dianha', 'ketgioi'])
         add('giaikinh', ['muada', 'loimoc', 'caytinh', 'dianha', 'ketgioi'])
         add('giaikg', ['muada', 'loimoc', 'caytinh', 'dianha'])
+        add('cuonglong', ['hoakhi','cuukiem', 'hoahothan'])
+        add('cuongno', ['hoakhi','diemvonhi', 'nguloi'])
+        add('bangthuong',['thuykhi','bangtram','bangphach'])
+        add('mieuthuy',['thuykhi','dinhthuy','tranggiai'])
+        add('khutuong',['diakhi','diadong','hoangtho'])
+        add('linhkinh',['diakhi','dialiet','thobang'])
+        add('phongthan',['phongkhi','lietphong','huyenanh'])
+        add('vohinh',['phongkhi','dauchuyen','phongchi'])
+        add('phanthan',['nguphong', 'lantranh', 'anminh'])
         return { quick }
     },
     getInitData: function () {
@@ -207,6 +220,7 @@ var Model = {
             diem: 0,
             learn: 0,
             ball: 0,
+            ngoc: 0,
             skills: this.getSkills().skills,
             quick: this.getQuick().quick
         }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bulma/css/bulma.min.css';
 import './tree.css';
 import './index.css';
+import './firebase.js';
 import App from './App';
 
 ReactDOM.render(

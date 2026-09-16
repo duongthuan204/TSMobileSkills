@@ -5,19 +5,25 @@ import ReactTooltip from 'react-tooltip';
 class Hoa extends React.Component {
 
     render() {
-        const { skills, update } = this.props
+        const { skills, update, he, ngoc } = this.props
         return (
             <div>
                 <div className="skill-panel container skill-hoa">
-                        <h1 className="level-1 rectangle">
-                            <Skill type="hoa" skill={skills['phonghoa']} update={update} />
-                        </h1>
-                        <ol className="level-2-wrapper">
-                            <Hoa1 skills={skills} update={update} />
-                            <Hoa2 skills={skills} update={update} />
-                        </ol>
-                    </div>
-                    {/* <div className="is-mobi">
+                    {he === 'hoa' && ngoc > 1 ? <div className="button is-danger is-light is-rounded mb-5">
+                        Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Phụng Hoàng (+<b>{skills['phunghoang'].pointRequire}</b>&nbsp;viên)
+                    </div> : ''}
+                    <h1 className="level-1 rectangle">
+                        <Skill type="hoa" skill={skills['phonghoa']} update={update} />
+                        {he === 'hoa' ? <div className="skill-logo">
+                            <Skill type="hoa" skill={skills['phunghoang']} update={update} tooltip={'Cần học thuật Triệu Gọi'}/>
+                        </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-hoa.png" alt="logo-brand"></img></div>}
+                    </h1>
+                    <ol className="level-2-wrapper">
+                        <Hoa1 skills={skills} update={update} />
+                        <Hoa2 skills={skills} update={update} />
+                    </ol>
+                </div>
+                {/* <div className="is-mobi">
                         <div className="columns">
                             <div className="column">
                                 <ol>

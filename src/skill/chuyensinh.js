@@ -104,7 +104,7 @@ function Hoa(props) {
     return (
         <div className="skill-panel container">
             <h1 className="level-1 rectangle">
-                    <Skill type="hoa" skill={skills['hoakhi']} update={update} tooltip={'Cần học xong tuyến hệ Hỏa'} />
+                <Skill type="hoa" skill={skills['hoakhi']} update={update} tooltip={'Cần học xong tuyến hệ Hỏa'} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
@@ -139,7 +139,7 @@ function Phong(props) {
     return (
         <div className="skill-panel container">
             <h1 className="level-1 rectangle">
-                    <Skill type="phong" skill={skills['phongkhi']} update={update} tooltip={'Cần học xong tuyến hệ Phong'} />
+                <Skill type="phong" skill={skills['phongkhi']} update={update} tooltip={'Cần học xong tuyến hệ Phong'} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
