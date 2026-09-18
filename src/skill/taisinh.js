@@ -27,12 +27,12 @@ class TaiSinh extends React.Component {
 
     message2() {
         const { learn, ball } = this.props
-        return (ball - learn) > 0 ? <div className="button is-light is-info is-rounded my-2">Còn&nbsp;<b>{ball - learn}</b>&nbsp;slot có thể học</div> : ''
+        return (ball - learn) > 0 ? <div className="button is-light is-link is-rounded my-2">Còn&nbsp;<b>{ball - learn}</b>&nbsp;slot có thể học</div> : ''
     }
 
     message3() {
         const { learn } = this.props
-        return (learn === 8) ? <div className="noti-ts button is-light is-warning is-rounded my-2">Đã học full slot kĩ năng</div> : ''
+        return (learn === 8) ? <div className="noti-ts button is-light is-warning is-rounded my-2">Đã học hết slot kĩ năng</div> : ''
     }
 
     render() {
@@ -45,7 +45,7 @@ class TaiSinh extends React.Component {
                     {nghe === 'tien' ? <Tien skills={skills} update={update} /> : ''}
                     {nghe === 'hiep' ? <Hiep skills={skills} update={update} /> : ''}
                     <hr className="my-2" />
-                    <div className="button is-warning is-light is-rounded my-2 mx-1">
+                    <div className="button is-dark is-rounded my-2 mx-1">
                         Cần có&nbsp;<b>{ball / 2 + learn}</b>&nbsp;Ball
                     </div>
                     <br className="is-mobi" />
@@ -167,7 +167,7 @@ function Dia(props) {
         <div>
             <div className="skill-panel-ts my-3">
                 <div className="is-inline-block mx-1">
-                    <img src="./assets/nghe/icon_dia.png" width="50" height="50" alt="dia"></img>
+                    <img className="disable-user-select" src="./assets/nghe/icon_dia.png" width="50" height="50" alt="dia" draggable={false}></img>
                 </div>
                 <div>
                     <SkillTooltip type="dia" skill={skills['chanba']} update={update} tooltip={tooltip} />
@@ -190,7 +190,7 @@ function Thuy(props) {
     return (
         <div className="skill-panel-ts my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/nghe/icon_thuy.png" width="50" height="50" alt="thuy"></img>
+                <img className="disable-user-select" src="./assets/nghe/icon_thuy.png" width="50" height="50" alt="thuy" draggable={false}></img>
             </div>
             <div>
                 <SkillTooltip type="thuy" skill={skills['thienbang']} update={update} tooltip={tooltip} />
@@ -212,7 +212,7 @@ function Hoa(props) {
     return (
         <div className="skill-panel-ts my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/nghe/icon_hoa.png" width="50" height="50" alt="hoa"></img>
+                <img className="disable-user-select" src="./assets/nghe/icon_hoa.png" width="50" height="50" alt="hoa" draggable={false}></img>
             </div>
             <div>
                 <SkillTooltip type="hoa" skill={skills['nhatkich']} update={update} tooltip={tooltip} />
@@ -235,7 +235,7 @@ function Phong(props) {
     return (
         <div className="skill-panel-ts my-3">
             <div className="is-inline-block mx-1">
-                <img src="./assets/nghe/icon_phong.png" width="50" height="50" alt="phong"></img>
+                <img className="disable-user-select" src="./assets/nghe/icon_phong.png" width="50" height="50" alt="phong" draggable={false}></img>
             </div>
             <div>
                 <SkillTooltip type="phong" skill={skills['bangloi']} update={update} tooltip={tooltip} />

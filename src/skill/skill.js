@@ -47,9 +47,13 @@ class Skill extends React.Component {
         const { doublePoint } = this.state
         const imgUrl = "./assets/" + type + "/" + skill.id + ".png"
         return <div>
-            <div className="skill-item" onClick={() => update(skill.id, doublePoint, type, isBall, false)} onDoubleClick={() => update(skill.id, doublePoint, type, isBall, true)} data-tip={this.renderTooltip()} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
-                <img className={skill.point < 1 ? 'skill-inactived' : ''} src={imgUrl} width="50" height="50" alt={skill.id}></img>
+            <div className="skill-item" tabIndex={0} onClick={() => update(skill.id, doublePoint, type, isBall, false)} data-tip={this.renderTooltip()} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
+                <img className={skill.point < 1 ? 'skill-inactived' : ''} src={imgUrl} width="50" height="50" alt={skill.id} draggable={false}></img>
                 {skill.point > 0 ? <div className="point">{skill.point}</div> : <div className="point require">{this.renderPoint()}</div>}
+                {skill.point > 0 ? <button className="delete-skill" onClick={(e) => {e.stopPropagation(); update(skill.id, doublePoint, type, isBall, true)}}>
+                        <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
+                            <path d="M2 2L18 18M18 2L2 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                        </svg></button> : ''}
             </div>
         </div>
     }

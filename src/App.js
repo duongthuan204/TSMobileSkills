@@ -113,8 +113,8 @@ class App extends React.Component {
         learn--
         this.setState({ learn: learn })
       }
-    } else {
-      diem -= (s.pointMax - 1)
+    } else if (s.point > 1) {
+      diem -= (s.point - 1)
       this.setState({ diem: diem })
       s.point = 1
     }
@@ -139,33 +139,37 @@ class App extends React.Component {
     this.setState({ skills: skills })
   }
 
-  updateSummonSKills = (id) => {
+  updateSummonSKills = (id, isDelete) => {
     const each = [0, 2, 4, 8, 14, 21, 29, 40, 52, 67]
     const total = [1, 2, 6, 14, 28, 49, 78, 118, 170, 237]
     // const each = [0, 1.7, 4.3, 8.0, 13.7, 20.7, 29.3, 39.7, 52.3, 66.7]
     // const total = [1, 1.7, 6.0, 14.7, 27.7, 48.3, 77.7, 117.3, 169.7, 236.3]
     let { skills } = this.state
     let s = skills[id]
+    if (isDelete) {
+      s.point = 0
+      s.pointRequire = 0
+      this.setState({ ngoc: 0 })
+      return
+    }
     if (s.point < 10) {
       this.setState({ ngoc: total[s.point] })
       s.pointRequire = each[s.point]
       s.point++
-    } else {
-      s.point = 0
-      s.pointRequire = 0
-      this.setState({ ngoc: 0 })
     }
   }
 
-  updateSkill = (id, doublePoint, type, isBall, isMax) => {
+  updateSkill = (id, doublePoint, type, isBall, isDelete) => {
     let { diem, learn, ball, skills, quick } = this.state
     let s = skills[id]
-    if (isMax && s.point > 2) return
     if (s.skillRequire === 'trieugoi') {
-      this.updateSummonSKills(id)
+      this.updateSummonSKills(id, isDelete)
       return
     }
-    let pointIncrease = isMax ? (s.pointMax - s.point) : 1
+    if (isDelete) {
+      this.uncheckedSkill(id, doublePoint, type, isBall)
+      return
+    }
     if (s.point === 0) {
       if (quick[id] !== undefined) {
         this.updateQuick(id, doublePoint)
@@ -185,11 +189,9 @@ class App extends React.Component {
         }
       }
     } else if (s.point < s.pointMax) {
-      diem += pointIncrease
+      diem++
       this.setState({ diem: diem })
-      s.point += pointIncrease
-    } else if (s.point === s.pointMax) {
-      this.uncheckedSkill(id, doublePoint, type, isBall)
+      s.point++
     }
     this.setState({ skills: skills })
   }

@@ -9,6 +9,8 @@ function About(props) {
     const [pointCS, setPointCS] = useState(0)
     const [pointTS, setPointTS] = useState(0)
 
+    const [showQR, setShowQR] = useState(false)
+
     const calculatePoint = () => {
         setPointCS(Math.floor(levelCS / 5))
         setPointTS(Math.floor(levelCS / 3) + Math.floor(levelTS / 3))
@@ -76,9 +78,14 @@ function About(props) {
                 <PointCalculate pointCS={pointCS} pointTS={pointTS} />
             </div>
             <div className="column card content mx-4 mb-4 p-5">
-                {/* <h3 className="has-text-centered">Donate</h3> */}
                 <p>Trang web này được mình xây dựng vì niềm yêu thích game TS Online và mong muốn đóng góp cho cộng đồng hoàn toàn miễn phí. Tuy nhiên nếu bạn thấy hữu ích và muốn mời một ly cafe thì mình rất cảm ơn 💕</p>
-                <img src=".\qr-code.png" alt="qr-code" width="300" />
+                {showQR ? <div className="qr-code">
+                    <img src=".\qr-code.png" alt="qr-code" width="280" />
+                    {/* <button className="qr-code-button button is-danger" onClick={() => setShowQR(false)}>Ẩn mã QR</button> */}
+                </div> : <div className="qr-code">
+                    <img src=".\qr-code-hide.png" alt="qr-code" width="280" />
+                    <button className="qr-code-button button is-info" onClick={() => setShowQR(true)}>Hiện mã QR</button>
+                </div>}
             </div>
             <div className="column card content mx-4 mb-4 p-5">
                 {/* <h3 className="has-text-centered">Giới thiệu</h3> */}
@@ -87,8 +94,8 @@ function About(props) {
                     <li>Quân đoàn Exotic - Server Tào Tháo (TS Origin VTC)</li>
                     <li>Liên hệ: <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">Facebook</a> hoặc <a href="https://zalo.me/0357232898" target="_blank" rel="noreferrer">Zalo</a> để góp ý hoặc báo lỗi</li>
                     <li>Đọc truyện chế TS mình làm từ thời Asiasoft <a href="https://drive.google.com/drive/folders/1iJRv72SGp-39JBFN4zr22irrvqvEV3FR?usp=drive_link" target="_blank" rel="noreferrer">ở đây</a></li>
-                    <li>Xem video bắt Ba Đậu Yêu <a href="https://www.youtube.com/watch?v=L_1hVpazuVU" target="_blank" rel="noreferrer">ở đây</a></li>
-                    <li>Thông tin trang web cung cấp chỉ có giá trị tham khảo</li>
+                    <li>Xem hướng dẫn bắt Ba Đậu Yêu <a href="https://www.youtube.com/watch?v=L_1hVpazuVU" target="_blank" rel="noreferrer">ở đây</a></li>
+                    <li>Trang web chỉ có giá trị tham khảo</li>
                 </ul>
                 <img src=".\screenshot.png" alt="screenshot" width="300" />
             </div>

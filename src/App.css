@@ -1,3 +1,7 @@
+.disable-user-select {
+    user-select: none;
+}
+
 .select select,
 .select {
     user-select: none;
@@ -162,10 +166,39 @@ a.about:hover {
     -moz-user-select: none;
     /* Firefox cũ */
     -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .skill-item>img:active {
     transform: scale(1.1, 1.1);
+}
+
+.skill-item:focus .delete-skill,
+.skill-item:hover .delete-skill {
+    opacity: 1;
+    visibility: visible
+}
+
+.delete-skill {
+    width: 21px;
+    height: 21px;
+    top: -8px;
+    right: -8px;
+    user-select: none;
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s;
 }
 
 .skill-logo {
@@ -302,8 +335,23 @@ a.about:hover {
     outline: none;
 }
 
+.close-about-page:hover {
+    background: rgba(0, 0, 0, 0.55);
+}
+
 .close-about-page:active {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.qr-code {
+    position: relative;
+}
+
+.qr-code-button {
+    position: absolute;
+    top: calc(50% + 15px);
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes zoomPop {
@@ -352,6 +400,13 @@ a.about:hover {
         position: absolute;
         width: 100%;
         margin-top: 101px;
+    }
+
+    .tabs {
+        position: sticky;
+        top: 156px;
+        z-index: 30;
+        background-color: #fff;
     }
 
     .skill-panel {
@@ -411,10 +466,25 @@ a.about:hover {
         padding-top: 0px;
         padding-bottom: 10px;
     }
+
+    .delete-skill {
+        width: 24px;
+        height: 24px;
+        top: -10px;
+        right: -11px;
+    }
+
+    .delete-skill:active {
+        background: rgba(255, 0, 0, 0.8);
+    }
 }
 
 @media screen and (min-width: 1024px) {
     .is-mobi {
         display: none !important
+    }
+
+    .delete-skill:hover {
+        background: rgba(255, 0, 0, 0.8);
     }
 }
