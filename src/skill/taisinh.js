@@ -45,12 +45,11 @@ class TaiSinh extends React.Component {
         return (
             <div>
                 <div className="skill-panel container">
-                    <div className="button is-link is-light is-rounded mb-5">
-                        Cần có&nbsp;<b>{ball}</b>&nbsp;Thiên Châu
-                    </div>
                     <div className="skill-tree-wrap">
                         <div className="skill-tree">
-
+                            <div className="button is-warning is-dark is-rounded ball-count">
+                                Ball:&nbsp;<b>{ball}</b>
+                            </div>
                             <div className="layer layer--bottom">
 
                                 <span className="line line--h line--row-a" aria-hidden="true"></span>
@@ -99,6 +98,10 @@ class TaiSinh extends React.Component {
                         </div>
                     </div>
                     <SelectSkillPanel showPanel={showPanel} setShowPanel={(value) => this.setState({ showPanel: value })} he={he} ball={ball} skills={skills} update={update} tooltip={this.tooltip} learnSlot={selectIndex} />
+                    <div className="banner-logo">
+                        <img src="./assets/icon/banner.png" alt="banner-logo" />
+                    </div>
+                    <HotkeyPanel skills={skills} />
                 </div>
                 <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
@@ -107,6 +110,33 @@ class TaiSinh extends React.Component {
 }
 
 export default TaiSinh;
+
+function HotkeySkill(props) {
+    const { type, skill } = props
+    const imgUrl = "./assets/" + type + "/" + skill.id + ".png"
+    return <div className="hotkey-skill">
+        <div className="skill-item" data-tip={skill.name} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
+            <img src={imgUrl} width="50" height="50" alt={skill.id} draggable={false}></img>
+            {skill.id !== 'black' ? <div className="point">{skill.point + 1}</div> : ''}
+        </div>
+    </div>
+}
+
+function HotkeyPanel(props) {
+    const { skills } = props
+    return <div className="hotkey-panel">
+        <HotkeySkill type="hoa" skill={skills['hoatien']} />
+        <HotkeySkill type="hoa" skill={skills['hoitam']} />
+        <HotkeySkill type="phong" skill={skills['lantranh']} />
+        <HotkeySkill type="thuy" skill={skills['bangphong']} />
+        <HotkeySkill type="thuy" skill={skills['hoisinh']} />
+        <HotkeySkill type="nghe" skill={skills['black']} />
+        <HotkeySkill type="nghe" skill={skills['black']} />
+        <HotkeySkill type="nghe" skill={skills['black']} />
+        <HotkeySkill type="nghe" skill={skills['black']} />
+        <HotkeySkill type="nghe" skill={skills['black']} />
+    </div>
+}
 
 function SelectSkillPanel(props) {
     const { showPanel, setShowPanel, he, ball, skills, update, tooltip, learnSlot } = props
@@ -184,7 +214,7 @@ function SlotSkill(props) {
         return <Skill type={skill.type} skill={skills[skill.name]} update={update} isBall={true} learnSlot={index} />
     } else {
         return <div className="skill-item" onClick={checkLearn}>
-            <img src='./assets/nghe/khong.png' width="50" height="50" draggable={false} />
+            <img src='./assets/nghe/select.png' width="50" height="50" draggable={false} />
         </div>
     }
 }
@@ -193,12 +223,6 @@ function SkillTooltip(props) {
     const { type, skill, update, tooltip, learnSlot } = props
     const handleUpdate = (...args) => {
         update(...args)
-        // if (skill.point > 0 || (skill.point === 0 && select === 'khong')) {
-        //     update(...args)
-        //     if (skill.point === 1) {
-        //         setSelect(skill.id)
-        //     }
-        // }
     }
     return (
         <div className="is-inline-block mx-1">

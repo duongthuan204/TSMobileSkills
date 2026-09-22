@@ -197,13 +197,28 @@ a.about:hover {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 10;
     -webkit-tap-highlight-color: transparent;
     outline: none;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.15s;
 }
+
+.summon-skill {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(35px);
+    height: 100%;
+    z-index: 10;
+    display: flex;
+}
+
+/* .summon-skill img {
+    width: 30px;
+    height: 30px;
+} */
 
 .skill-logo {
     position: absolute;
@@ -361,8 +376,8 @@ a.about:hover {
 .skill-panel-taisinh {
     position: absolute;
     width: 95%;
-    height: 100%;
-    top: 0;
+    top: -2px;
+    height: calc(100% + 4px);
     z-index: 55;
     background-color: #fff;
     left: 2.5%;
@@ -374,9 +389,57 @@ a.about:hover {
     margin: .25rem 0 .25rem 0;
 }
 
+.ball-count {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.banner-logo {
+    margin: 20px 0;
+}
+
+.banner-logo img {
+    width: 220px;
+    opacity: 0.6;
+}
+
+.hotkey-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #403C90;
+    padding: 5px;
+    gap: 5px;
+    width: 100%;
+    max-width: 560px;
+    min-height: 50px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 3px;
+    border: 1px solid #EFF7F7;
+    outline: 1px solid #42696B;
+}
+
+.hotkey-skill {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    /* không cho div con bị co lại khi hết chỗ */
+}
+
 @keyframes banner-in {
-  from { max-height: 0; opacity: 0; }
-  to   { max-height: 40px; opacity: 1; }
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    to {
+        max-height: 40px;
+        opacity: 1;
+    }
 }
 
 @keyframes zoomPop {
@@ -511,6 +574,10 @@ a.about:hover {
 
     .skill-panel-taisinh .control button {
         font-size: 1.1rem;
+    }
+
+    .hotkey-panel {
+        max-width: 285px;
     }
 }
 

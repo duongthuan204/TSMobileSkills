@@ -9,13 +9,24 @@ class Hoa extends React.Component {
         return (
             <div>
                 <div className="skill-panel container skill-hoa">
-                    {he === 'hoa' && ngoc > 1 ? <div className="pop-notification button is-danger is-light is-rounded mb-5">
+                    {/* {he === 'hoa' && ngoc > 1 ? <div className="pop-notification button is-danger is-light is-rounded mb-5">
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Phụng Hoàng (+<b>{skills['phunghoang'].pointRequire}</b>&nbsp;viên)
-                    </div> : ''}
+                    </div> : ''} */}
                     <h1 className="level-1 rectangle">
-                        <Skill type="hoa" skill={skills['phonghoa']} update={update} />
+                        <div>
+                            <Skill type="hoa" skill={skills['phonghoa']} update={update} />
+                            {he === 'hoa' && ngoc > 1 ? <div className="summon-skill">
+                                <div class="button is-danger is-light is-rounded is-medium">
+                                    <span class="icon">
+                                        <img src="./assets/icon/ngoc-hoa.png" alt="trieu-goi"></img>
+                                    </span>
+                                    <span className="bold">{ngoc}</span>
+                                    <span className="bold is-size-7">&nbsp;(+{skills['phunghoang'].pointRequire})</span>
+                                </div>
+                            </div> : ''}
+                        </div>
                         {he === 'hoa' ? <div className="skill-logo">
-                            <Skill type="hoa" skill={skills['phunghoang']} update={update} tooltip={'Cần học thuật Triệu Gọi'}/>
+                            <Skill type="hoa" skill={skills['phunghoang']} update={update} />
                         </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-hoa.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">
@@ -23,21 +34,6 @@ class Hoa extends React.Component {
                         <Hoa2 skills={skills} update={update} />
                     </ol>
                 </div>
-                {/* <div className="is-mobi">
-                        <div className="columns">
-                            <div className="column">
-                                <ol>
-                                    <Hoa1 skills={skills} update={update} />
-                                </ol>
-                            </div>
-                            <hr />
-                            <div className="column">
-                                <ol>
-                                    <Hoa2 skills={skills} update={update} />
-                                </ol>
-                            </div>
-                        </div>
-                    </div> */}
                 <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
         );
@@ -50,9 +46,6 @@ function Hoa1(props) {
     const { skills, update } = props
     return (
         <li>
-            {/* <h1 className="level-2 rectangle is-mobi">
-                <Skill type="hoa" skill={skills['phonghoa']} update={update} />
-            </h1> */}
             <h1 className="level-2 rectangle">
                 <Skill type="hoa" skill={skills['hoatien']} update={update} />
             </h1>
@@ -76,9 +69,6 @@ function Hoa2(props) {
     const { skills, update } = props
     return (
         <li>
-            {/* <h1 className="level-2 rectangle is-mobi">
-                <Skill type="hoa" skill={skills['phonghoa']} update={update} />
-            </h1> */}
             <h1 className="level-1 rectangle">
                 <Skill type="hoa" skill={skills['liethoa']} update={update} />
             </h1>

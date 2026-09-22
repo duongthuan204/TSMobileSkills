@@ -19,7 +19,8 @@ var Model = {
             skills = { ...skills, ...skill }
         }
         var skills = {}
-        add('khong', 'Ô skill trống', 0, 'khong')
+        add('select', 'Chọn kĩ năng', 0, 'khong')
+        add('black', 'Ô trống', 0, 'khong')
         //Hoa
         add('phunghoang', 'Phụng Hoàng', 0, 'trieugoi')
         add('phonghoa', 'Phóng Hỏa', 1, 'khong')

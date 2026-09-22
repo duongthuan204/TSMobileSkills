@@ -9,13 +9,22 @@ class Dia extends React.Component {
         return (
             <div>
                 <div className="skill-panel container skill-dia">
-                    {he === 'dia' && ngoc > 1 ? <div className="pop-notification button is-warning is-light is-rounded mb-5">
+                    {/* {he === 'dia' && ngoc > 1 ? <div className="pop-notification button is-warning is-light is-rounded mb-5">
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Nham Quái (+<b>{skills['nhamquai'].pointRequire}</b>&nbsp;viên)
-                    </div> : ''}
+                    </div> : ''} */}
                     <h1 className="level-1 rectangle">
                         <Skill type="dia" skill={skills['muada']} update={update} />
+                        {he === 'dia' && ngoc > 1 ? <div className="summon-skill">
+                            <div class="button is-warning is-light is-rounded is-medium">
+                                <span class="icon">
+                                    <img src="./assets/icon/ngoc-dia.png" alt="trieu-goi"></img>
+                                </span>
+                                <span className="bold">{ngoc}</span>
+                                <span className="bold is-size-7">&nbsp;(+{skills['nhamquai'].pointRequire})</span>
+                            </div>
+                        </div> : ''}
                         {he === 'dia' ? <div className="skill-logo">
-                            <Skill type="dia" skill={skills['nhamquai']} update={update} tooltip={'Cần học thuật Triệu Gọi'} />
+                            <Skill type="dia" skill={skills['nhamquai']} update={update} />
                         </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-dia.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">

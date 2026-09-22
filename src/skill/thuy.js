@@ -9,13 +9,22 @@ class Thuy extends React.Component {
         return (
             <div>
                 <div className="skill-panel container">
-                    {he === 'thuy' && ngoc > 1 ? <div className="pop-notification button is-info is-light is-rounded mb-5">
+                    {/* {he === 'thuy' && ngoc > 1 ? <div className="pop-notification button is-info is-light is-rounded mb-5">
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Thủy Thần (+<b>{skills['thuythan'].pointRequire}</b>&nbsp;viên)
-                    </div> : ''}
+                    </div> : ''} */}
                     <h1 className="level-1 rectangle">
                         <Skill type="thuy" skill={skills['nuocngap']} update={update} />
+                        {he === 'thuy' && ngoc > 1 ? <div className="summon-skill">
+                            <div class="button is-info is-light is-rounded is-medium">
+                                <span class="icon">
+                                    <img src="./assets/icon/ngoc-thuy.png" alt="trieu-goi"></img>
+                                </span>
+                                <span className="bold">{ngoc}</span>
+                                <span className="bold is-size-7">&nbsp;(+{skills['thuythan'].pointRequire})</span>
+                            </div>
+                        </div> : ''}
                         {he === 'thuy' ? <div className="skill-logo">
-                            <Skill type="thuy" skill={skills['thuythan']} update={update} tooltip={'Cần học thuật Triệu Gọi'} />
+                            <Skill type="thuy" skill={skills['thuythan']} update={update} />
                         </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-thuy.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">
