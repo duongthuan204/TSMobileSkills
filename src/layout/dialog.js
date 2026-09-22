@@ -35,9 +35,9 @@ class Dialog extends React.Component {
                             <span className="text-white">
                                 <p>Hướng dẫn sử dụng:</p>
                                 <ul>
-                                    <li>* Hỗ trợ học nhanh các kĩ năng cuối nhánh</li>
-                                    <li>* Có thể xóa kĩ năng đã học với điều kiện không có kĩ năng nào phụ thuộc (có thì chỉ giảm điểm về 1)</li>
-                                    <li>* Đối với Tái Sinh thì mỗi kĩ năng Nghề sẽ mở khóa 2 slot kĩ năng Hệ (chưa tính Ball)</li>
+                                    <li>* Hỗ trợ học nhanh các kĩ năng cuối nhánh chuyển sinh và chưa chuyển sinh</li>
+                                    <li>* Nếu có kĩ năng phụ thuộc thì không thể xóa kĩ năng đã học mà chỉ giảm điểm về 1</li>
+                                    <li>* Học kĩ năng Tái Sinh thì cần học kĩ năng Nghề cùng nhánh trước (ball tự động lắp)</li>
                                 </ul>
                             </span>
                         </div>}

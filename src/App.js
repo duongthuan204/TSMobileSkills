@@ -16,13 +16,23 @@ class App extends React.Component {
       he: data.he,
       nghe: data.nghe,
       diem: data.diem,
-      learn: data.learn,
       ball: data.ball,
       skills: data.skills,
       quick: data.quick,
       ngoc: data.ngoc,
-      openAbout: false
+      openAbout: false,
+      learn: Array(8).fill(null)
     }
+
+    // const test1 = { name: 'liettram', type: 'hoa' }
+    // const test2 = { name: 'chandien', type: 'phong' }
+    // const test3 = { name: 'giaithuat', type: 'thuy' }
+    // const { learn } = this.state
+    // learn[0] = test1
+    // learn[1] = test2
+    // learn[2] = test3
+    // this.setState({ learn: learn })
+
   }
 
   // checkMobile() {
@@ -38,6 +48,7 @@ class App extends React.Component {
     localStorage.removeItem('data')
     const data = Model.getInitData().initData
     localStorage.setItem('char', data.he)
+    localStorage.setItem('nghe', data.nghe)
     return data
   }
 
@@ -56,6 +67,7 @@ class App extends React.Component {
 
   updateNghe = value => {
     this.setState({ nghe: value })
+    localStorage.setItem('nghe', value)
   }
 
   checkSkillRequire = id => {
@@ -76,12 +88,19 @@ class App extends React.Component {
     }
   }
 
-  uncheckedSkill = (id, doublePoint, type, isBall) => {
+  uncheckedSkill = (id, doublePoint, type, isBall, learnSlot) => {
     let { diem, learn, ball, skills } = this.state
     let s = skills[id]
     let check = false
-    if (type === 'nghe' && id !== 'daichuthien') {
-      if ((ball - learn) < 2) {
+    if (learnSlot != null & type === 'nghe') {
+      const i = learnSlot
+      if (i === 0 && (learn[0] !== null || learn[1] !== null)) {
+        check = true
+      } else if (i === 1 & (learn[2] !== null || learn[3] !== null)) {
+        check = true
+      } else if (i === 2 & (learn[4] !== null || learn[5] !== null)) {
+        check = true
+      } else if (i === 3 & (learn[6] !== null || learn[7] !== null)) {
         check = true
       }
     }
@@ -106,11 +125,12 @@ class App extends React.Component {
       diem -= (doublePoint ? s.pointRequire * 2 : s.pointRequire) + (s.point - 1)
       this.setState({ diem: diem })
       s.point = 0
-      if (type === 'nghe' && id !== 'daichuthien') {
-        ball -= 2
+      if (isBall || (type === 'nghe' && id !== 'daichuthien')) {
+        ball--
         this.setState({ ball: ball })
-      } else if (isBall && type !== 'nghe') {
-        learn--
+      }
+      if (learnSlot != null & type !== 'nghe') {
+        learn[learnSlot] = null
         this.setState({ learn: learn })
       }
     } else if (s.point > 1) {
@@ -159,7 +179,7 @@ class App extends React.Component {
     }
   }
 
-  updateSkill = (id, doublePoint, type, isBall, isDelete) => {
+  updateSkill = (id, doublePoint, type, isBall, learnSlot, isDelete) => {
     let { diem, learn, ball, skills, quick } = this.state
     let s = skills[id]
     if (s.skillRequire === 'trieugoi') {
@@ -167,25 +187,23 @@ class App extends React.Component {
       return
     }
     if (isDelete) {
-      this.uncheckedSkill(id, doublePoint, type, isBall)
+      this.uncheckedSkill(id, doublePoint, type, isBall, learnSlot)
       return
     }
     if (s.point === 0) {
       if (quick[id] !== undefined) {
         this.updateQuick(id, doublePoint)
       } else if (this.checkSkillRequire(id)) {
-        if (isBall && type !== 'nghe') {
-          if (learn < ball) {
-            learn++
-            this.setState({ learn: learn })
-          } else return
-        }
         diem += (doublePoint ? s.pointRequire * 2 : s.pointRequire)
         this.setState({ diem: diem })
         s.point++
-        if (type === 'nghe' && id !== 'daichuthien') {
-          ball += 2
+        if (isBall || (type === 'nghe' && id !== 'daichuthien')) {
+          ball++
           this.setState({ ball: ball })
+        }
+        if (learnSlot !== null && type !== 'nghe') {
+          learn[learnSlot] = { name: s.id, type: type }
+          this.setState({ learn: learn })
         }
       }
     } else if (s.point < s.pointMax) {
@@ -201,7 +219,7 @@ class App extends React.Component {
     for (var s in skills) {
       skills[s].point = 0
     }
-    this.setState({ skills: skills, diem: 0, learn: 0, ball: 0, ngoc: 0 })
+    this.setState({ skills: skills, diem: 0, learn: Array(8).fill(null), ball: 0, ngoc: 0 })
   }
 
   render() {

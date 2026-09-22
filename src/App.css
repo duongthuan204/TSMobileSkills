@@ -159,7 +159,7 @@ a.about:hover {
     width: fit-content;
     margin: auto;
     cursor: pointer;
-    transition: all 2s ease-in-out;
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
     user-select: none;
     -webkit-user-select: none;
     /* Safari, Chrome cũ */
@@ -170,13 +170,17 @@ a.about:hover {
 }
 
 .skill-item>img:active {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.1);
 }
 
-.skill-item:focus .delete-skill,
 .skill-item:hover .delete-skill {
     opacity: 1;
     visibility: visible
+}
+
+.skill-panel-taisinh .skill-item:hover .delete-skill {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .delete-skill {
@@ -288,7 +292,7 @@ a.about:hover {
     user-select: none;
 }
 
-.noti-ts.active {
+.pop-notification {
     animation: zoomPop 0.5s ease;
 }
 
@@ -354,6 +358,27 @@ a.about:hover {
     transform: translate(-50%, -50%);
 }
 
+.skill-panel-taisinh {
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    top: 0;
+    z-index: 55;
+    background-color: #fff;
+    left: 2.5%;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.skill-panel-ts {
+    margin: .25rem 0 .25rem 0;
+}
+
+@keyframes banner-in {
+  from { max-height: 0; opacity: 0; }
+  to   { max-height: 40px; opacity: 1; }
+}
+
 @keyframes zoomPop {
     0% {
         transform: scale(1);
@@ -402,15 +427,17 @@ a.about:hover {
         margin-top: 101px;
     }
 
-    .tabs {
+    /* .tabs {
         position: sticky;
         top: 156px;
         z-index: 30;
         background-color: #fff;
-    }
+    } */
 
     .skill-panel {
-        zoom: 0.8;
+        transform: scale(0.8);
+        transform-origin: top left;
+        width: 125%;
     }
 
     .skill-logo-img {
@@ -450,6 +477,10 @@ a.about:hover {
         margin-right: 10px;
     }
 
+    .skill-chuyensinh.columns {
+        margin-top: 0;
+    }
+
     .skill-chuyensinh .column {
         padding: 0;
     }
@@ -477,6 +508,10 @@ a.about:hover {
     .delete-skill:active {
         background: rgba(255, 0, 0, 0.8);
     }
+
+    .skill-panel-taisinh .control button {
+        font-size: 1.1rem;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -486,5 +521,6 @@ a.about:hover {
 
     .delete-skill:hover {
         background: rgba(255, 0, 0, 0.8);
+        transform: scale(1.2);
     }
 }

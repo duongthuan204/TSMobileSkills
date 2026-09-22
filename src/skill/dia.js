@@ -9,7 +9,7 @@ class Dia extends React.Component {
         return (
             <div>
                 <div className="skill-panel container skill-dia">
-                    {he === 'dia' && ngoc > 1 ? <div className="button is-warning is-light is-rounded mb-5">
+                    {he === 'dia' && ngoc > 1 ? <div className="pop-notification button is-warning is-light is-rounded mb-5">
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Nham Quái (+<b>{skills['nhamquai'].pointRequire}</b>&nbsp;viên)
                     </div> : ''}
                     <h1 className="level-1 rectangle">

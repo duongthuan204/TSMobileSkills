@@ -9,7 +9,7 @@ class Phong extends React.Component {
         return (
             <div>
                 <div className="skill-panel container">
-                    {he === 'phong' && ngoc > 1 ? <div className="button is-success is-light is-rounded mb-5">
+                    {he === 'phong' && ngoc > 1 ? <div className="pop-notification button is-success is-light is-rounded mb-5">
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Thanh Long (+<b>{skills['thanhlong'].pointRequire}</b>&nbsp;viên)
                     </div> : ''}
                     <h1 className="level-1 rectangle">

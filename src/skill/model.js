@@ -19,6 +19,7 @@ var Model = {
             skills = { ...skills, ...skill }
         }
         var skills = {}
+        add('khong', 'Ô skill trống', 0, 'khong')
         //Hoa
         add('phunghoang', 'Phụng Hoàng', 0, 'trieugoi')
         add('phonghoa', 'Phóng Hỏa', 1, 'khong')
@@ -215,10 +216,9 @@ var Model = {
     getInitData: function () {
         var initData = {
             isLock: false,
-            he: 'dia',
-            nghe: 'ba',
+            he: localStorage.getItem('char') || 'dia',
+            nghe: localStorage.getItem('nghe') || 'ba',
             diem: 0,
-            learn: 0,
             ball: 0,
             ngoc: 0,
             skills: this.getSkills().skills,

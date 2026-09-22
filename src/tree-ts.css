@@ -1,0 +1,343 @@
+/* ==========================================================================
+   SKILL TREE  —  skill-tree.css
+
+   - Chỉ cần sửa các biến ở khối CONFIG bên dưới: kích thước (--st-box,
+     --st-line, --st-dot, --st-dot-frame) và khoảng cách (--st-gap-*).
+     Mọi vị trí đều suy ra từ đó, nên đổi thế nào thì đường nối vẫn khít với ô.
+   - Toạ độ (--x, --y) tính bằng ĐƠN VỊ Ô (1 = cạnh 1 ô), gốc (0,0) là tâm ô W,
+     x sang phải là dương, y đi xuống là dương.
+   - Đường nối được kéo tới TÂM của ô và nằm dưới ô (ô có nền đặc), nên
+     không bao giờ hở khe giữa đường nối và ô.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Khung chứa + CONFIG
+   -------------------------------------------------------------------------- */
+
+.skill-tree-wrap {
+  container-type: inline-size;   /* để sơ đồ co theo bề ngang khung chứa */
+  width: 100%;
+}
+
+.skill-tree {
+  /* ===== CONFIG: sửa ở đây (đây là kích thước TỐI ĐA) ===== */
+  --st-box: 50px;            /* cạnh ô vuông                                */
+  --st-line: 3px;            /* độ dày đường nối                            */
+  --st-dot: 13px;            /* đường kính chấm tròn                        */
+  --st-dot-frame: 2px;       /* độ dày khung bo góc quanh chấm              */
+
+  /* Khoảng cách giữa các ô (= độ dài đoạn đường nối nhìn thấy).
+     Là số KHÔNG đơn vị, tính theo cạnh ô: 1 = 1 ô (50px khi ô 50px).
+     Nên để mỗi khoảng >= (chấm + 2*khung + 10px) / ô, tức >= 0.8 với cỡ mặc định. */
+  --st-gap-x: 1.2;           /* W  <-> D, W <-> B                            */
+  --st-gap-y: 1.2;             /* W  <-> A, W <-> C                            */
+  --st-gap-fork: 1.3;        /* D  <-> 7/8, B <-> 3/4 (chỗ chia nhánh)       */
+  --st-gap-pair: 0.3;        /* 7  <-> 8, 3 <-> 4                            */
+  --st-gap-diag: 0.2;        /* 1,2,5,6 <-> D,B (khe giữa ô chéo và D/B)     */
+
+  --st-box-bg: #ffffff;
+  --st-box-border: #8f8f8f;
+  --st-box-border-width: 1px;
+  --st-box-color: #8f8f8f;
+  --st-line-color: #80B8BE;
+  --st-dot-on: #ffc21a;
+  --st-dot-off: #d5e3e5;
+  --st-focus: #a44ea6;
+
+  /* ===== Toạ độ suy ra từ gap (tự tính, không cần sửa) ===== */
+  --x-side:  calc(1 + var(--st-gap-x));                                /* tâm D, B          */
+  --y-side:  calc(1 + var(--st-gap-y));                                /* tâm A, C          */
+  --x-diag:  calc(0.5 + var(--st-gap-x));                              /* tâm 1,2,5,6       */
+  --y-diag:  calc(1 + var(--st-gap-diag));                             /* tâm 1,2,5,6       */
+  --x-trunk: calc(var(--x-side) + 0.5 + var(--st-gap-fork) / 2);       /* thân nhánh 7/8    */
+  --x-leaf:  calc(var(--x-side) + 1 + var(--st-gap-fork));             /* tâm 7,8,3,4       */
+  --y-pair:  calc(0.5 + var(--st-gap-pair) / 2);                       /* tâm 7,8,3,4 (|y|) */
+  --len-leaf: calc(0.5 + var(--st-gap-fork) / 2);
+  --len-diag: max(0, calc(var(--st-gap-y) - var(--st-gap-diag)));
+
+  /* Bề ngang / bề cao sơ đồ tính theo số ô */
+  --w-units: calc(5 + 2 * var(--st-gap-x) + 2 * var(--st-gap-fork));
+  --h-units: max(calc(3 + 2 * var(--st-gap-y)), calc(2 + var(--st-gap-pair)));
+
+  /* ===== Kích thước thực tế (tự tính, không cần sửa) =====
+     Khung chứa hẹp hơn sơ đồ thì ô co lại; đường nối và chấm
+     cũng bị chặn để không đè lên nhau. */
+  --b: min(var(--st-box), calc(100cqw / var(--w-units)));
+  --l: min(var(--st-line), calc(var(--b) * 0.12));
+  --d: min(var(--st-dot), calc(var(--b) * 0.45));
+
+  position: relative;
+  width: calc(var(--b) * var(--w-units));
+  height: calc(var(--b) * var(--h-units));
+  margin-inline: auto;
+}
+
+/* Trình duyệt cũ chưa có container query units */
+@supports not (width: 1cqw) {
+  .skill-tree {
+    --b: min(var(--st-box), calc((100vw - 32px) / var(--w-units)));
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Hai layer
+      - layer--bottom: ô 1-8, đường nối, chấm
+      - layer--top   : ô W A B C D (nằm trên cùng)
+   -------------------------------------------------------------------------- */
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.layer--bottom { z-index: 1; }
+
+.layer--top {
+  z-index: 2;
+  pointer-events: none;            /* không chặn click xuống chấm bên dưới */
+}
+.layer--top .node { pointer-events: auto; }
+
+
+/* --------------------------------------------------------------------------
+   3. Ô vuông
+   -------------------------------------------------------------------------- */
+
+.node {
+  --x: 0;
+  --y: 0;
+  position: absolute;
+  left: calc(50% + var(--x) * var(--b));
+  top:  calc(50% + var(--y) * var(--b));
+  width: var(--b);
+  height: var(--b);
+  transform: translate(-50%, -50%);
+  z-index: 2;                      /* trên đường nối, dưới chấm */
+
+  box-sizing: border-box;          /* viền nằm trong 50x50 */
+  display: grid;
+  place-items: center;
+  background: var(--st-box-bg);
+  /* border: var(--st-box-border-width) solid var(--st-box-border); */
+  color: var(--st-box-color);
+  /* font: 700 calc(var(--b) * 0.52) / 1 "Segoe UI", system-ui, Arial, sans-serif; */
+  user-select: none;
+}
+
+/* Vị trí các ô (đơn vị: ô, suy ra từ --st-gap-*) */
+.node--W { --x: 0;                          --y: 0; }
+.node--A { --x: 0;                          --y: calc(-1 * var(--y-side)); }
+.node--C { --x: 0;                          --y: var(--y-side); }
+.node--D { --x: calc(-1 * var(--x-side));   --y: 0; }
+.node--B { --x: var(--x-side);              --y: 0; }
+
+.node--1 { --x: calc(-1 * var(--x-diag));   --y: calc(-1 * var(--y-diag)); }
+.node--2 { --x: var(--x-diag);              --y: calc(-1 * var(--y-diag)); }
+.node--5 { --x: calc(-1 * var(--x-diag));   --y: var(--y-diag); }
+.node--6 { --x: var(--x-diag);              --y: var(--y-diag); }
+
+.node--7 { --x: calc(-1 * var(--x-leaf));   --y: calc(-1 * var(--y-pair)); }
+.node--8 { --x: calc(-1 * var(--x-leaf));   --y: var(--y-pair); }
+.node--3 { --x: var(--x-leaf);              --y: calc(-1 * var(--y-pair)); }
+.node--4 { --x: var(--x-leaf);              --y: var(--y-pair); }
+
+
+/* --------------------------------------------------------------------------
+   4. Đường nối
+      --x, --y : điểm đầu (trái với đường ngang, trên với đường dọc)
+      --len    : chiều dài (đơn vị ô)
+      Đường được căn giữa theo trục nên đổi --st-line vẫn không lệch.
+   -------------------------------------------------------------------------- */
+
+.line {
+  --x: 0;
+  --y: 0;
+  --len: 1;
+  position: absolute;
+  z-index: 1;                      /* thấp nhất trong layer dưới */
+  background: var(--st-line-color);
+}
+
+.line--h {
+  left:   calc(50% + var(--x) * var(--b));
+  top:    calc(50% + var(--y) * var(--b) - var(--l) / 2);
+  width:  calc(var(--len) * var(--b));
+  height: var(--l);
+}
+
+.line--v {
+  left:   calc(50% + var(--x) * var(--b) - var(--l) / 2);
+  top:    calc(50% + var(--y) * var(--b));
+  width:  var(--l);
+  height: calc(var(--len) * var(--b));
+}
+
+/* Đường ngang */
+.line--row-a  { --x: calc(-1 * var(--x-diag));  --y: calc(-1 * var(--y-side));  --len: calc(2 * var(--x-diag)); }   /* chấm A-1 -> A -> chấm A-2 */
+.line--row-c  { --x: calc(-1 * var(--x-diag));  --y: var(--y-side);              --len: calc(2 * var(--x-diag)); }   /* chấm C-5 -> C -> chấm C-6 */
+.line--row-w  { --x: calc(-1 * var(--x-trunk)); --y: 0;                          --len: calc(2 * var(--x-trunk)); }  /* nhánh trái, D, W, B, nhánh phải */
+.line--to-7   { --x: calc(-1 * var(--x-leaf));  --y: calc(-1 * var(--y-pair));   --len: var(--len-leaf); }
+.line--to-8   { --x: calc(-1 * var(--x-leaf));  --y: var(--y-pair);              --len: var(--len-leaf); }
+.line--to-3   { --x: var(--x-trunk);            --y: calc(-1 * var(--y-pair));   --len: var(--len-leaf); }
+.line--to-4   { --x: var(--x-trunk);            --y: var(--y-pair);              --len: var(--len-leaf); }
+
+/* Đường dọc */
+.line--col-w   { --x: 0;                          --y: calc(-1 * var(--y-side));  --len: calc(2 * var(--y-side)); }  /* A, W, C */
+.line--to-1    { --x: calc(-1 * var(--x-diag));   --y: calc(-1 * var(--y-side));  --len: var(--len-diag); }
+.line--to-2    { --x: var(--x-diag);              --y: calc(-1 * var(--y-side));  --len: var(--len-diag); }
+.line--to-5    { --x: calc(-1 * var(--x-diag));   --y: var(--y-diag);             --len: var(--len-diag); }
+.line--to-6    { --x: var(--x-diag);              --y: var(--y-diag);             --len: var(--len-diag); }
+.line--trunk-l { --x: calc(-1 * var(--x-trunk));  --y: calc(-1 * var(--y-pair));  --len: calc(2 * var(--y-pair)); } /* thân nhánh D -> 7, 8 */
+.line--trunk-r { --x: var(--x-trunk);             --y: calc(-1 * var(--y-pair));  --len: calc(2 * var(--y-pair)); } /* thân nhánh B -> 3, 4 */
+
+
+/* --------------------------------------------------------------------------
+   5. Chấm tròn (checkbox ẩn → bật/tắt không cần JS)
+      Bật = vàng, tắt = xám. Đọc trạng thái: input.checked
+   -------------------------------------------------------------------------- */
+
+.dot {
+  --x: 0;
+  --y: 0;
+  position: absolute;
+  left: calc(50% + var(--x) * var(--b));
+  top:  calc(50% + var(--y) * var(--b));
+  width: var(--d);
+  height: var(--d);
+  transform: translate(-50%, -50%);
+  z-index: 3;                      /* trên cùng trong layer dưới */
+  cursor: pointer;
+}
+
+/* khung bo góc quanh chấm (không ảnh hưởng kích thước 20x20) */
+.dot::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--st-dot-frame) * -1);
+  border-radius: 50%;
+  background: var(--st-line-color);
+}
+
+.dot__face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--st-dot-off);
+  transition: background-color 0.15s, transform 0.15s;
+}
+
+.skill-tree { --st-dot-socket: #d5e3e5; }   /* màu đáy ổ lõm khi tắt */
+
+.dot::before { content: none; }
+
+.dot__face {
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, .22),
+    inset 1.5px 1.5px 2.5px rgba(0, 0, 0, .3),
+    inset -1px -1px 1.5px rgba(255, 255, 255, .3),
+    0 0 0 var(--st-dot-frame) var(--st-line-color);      /* khung */
+}
+
+.dot__input:checked + .dot__face {
+  box-shadow:
+    inset 0 0 0 0 rgba(0, 0, 0, 0),
+    inset 0 0 0 0 rgba(0, 0, 0, 0),
+    inset 0 0 0 0 rgba(255, 255, 255, 0),
+    0 0 0 var(--st-dot-frame) var(--st-line-color);      /* khung */
+}
+
+/* Lớp 1 của ngọc: điểm phản chiếu góc trên trái + rìa tối dần */
+.dot__face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 36% 36%, rgba(255,255,255,.95) 0 9%, rgba(255,255,255,0) 32%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0) 50%, rgba(140,80,0,.45) 100%);
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+/* Lớp 2 của ngọc: lõi sáng ở giữa */
+/* .dot__face::after {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, #fff 0%, rgba(255,246,196,.85) 35%, rgba(255,246,196,0) 70%);
+  opacity: 0;
+  transition: opacity .2s;
+} */
+
+.dot__input:checked + .dot__face::before { opacity: 1; }
+.dot__input:checked + .dot__face::after  {
+  opacity: 1;
+  animation: dot-gem-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes dot-gem-pulse {
+  0%, 100% { opacity: .75; transform: scale(.9); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot__input:checked + .dot__face::after { animation: none; }
+}
+
+.dot__input {
+  position: absolute;
+  left:   calc(var(--st-dot-frame) * -1);
+  top:    calc(var(--st-dot-frame) * -1);
+  width:  calc(100% + var(--st-dot-frame) * 2);
+  height: calc(100% + var(--st-dot-frame) * 2);
+  margin: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.dot__input:checked + .dot__face      { background: var(--st-dot-on); }
+/* .dot:hover .dot__face                 { transform: scale(1.1); } */
+.dot__input:focus-visible + .dot__face {
+  outline: 2px solid var(--st-focus);
+  outline-offset: calc(var(--st-dot-frame) + 2px);
+}
+
+/* Vị trí các chấm (đơn vị: ô, suy ra từ --st-gap-*) */
+.dot--a1 { --x: calc(-1 * var(--x-diag));    --y: calc(-1 * var(--y-side)); }
+.dot--a2 { --x: var(--x-diag);               --y: calc(-1 * var(--y-side)); }
+.dot--aw { --x: 0;                           --y: calc(-0.5 * var(--y-side)); }
+.dot--wd { --x: calc(-0.5 * var(--x-side));  --y: 0; }
+.dot--wb { --x: calc(0.5 * var(--x-side));   --y: 0; }
+.dot--wc { --x: 0;                           --y: calc(0.5 * var(--y-side)); }
+.dot--c5 { --x: calc(-1 * var(--x-diag));    --y: var(--y-side); }
+.dot--c6 { --x: var(--x-diag);               --y: var(--y-side); }
+.dot--d7 { --x: calc(-1 * var(--x-trunk));   --y: calc(-1 * var(--y-pair)); }
+.dot--d8 { --x: calc(-1 * var(--x-trunk));   --y: var(--y-pair); }
+.dot--b3 { --x: var(--x-trunk);              --y: calc(-1 * var(--y-pair)); }
+.dot--b4 { --x: var(--x-trunk);              --y: var(--y-pair); }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+.skill-tree {
+  --st-gap-x: 0.8;           /* W  <-> D, W <-> B                            */
+  --st-gap-y: 1.1;             /* W  <-> A, W <-> C                            */
+  --st-gap-fork: 0.8;        /* D  <-> 7/8, B <-> 3/4 (chỗ chia nhánh)       */
+  --st-gap-pair: 0.3;        /* 7  <-> 8, 3 <-> 4                            */
+  --st-gap-diag: 0.2;
+}
+
+}

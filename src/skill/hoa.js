@@ -9,7 +9,7 @@ class Hoa extends React.Component {
         return (
             <div>
                 <div className="skill-panel container skill-hoa">
-                    {he === 'hoa' && ngoc > 1 ? <div className="button is-danger is-light is-rounded mb-5">
+                    {he === 'hoa' && ngoc > 1 ? <div className="pop-notification button is-danger is-light is-rounded mb-5">
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Phụng Hoàng (+<b>{skills['phunghoang'].pointRequire}</b>&nbsp;viên)
                     </div> : ''}
                     <h1 className="level-1 rectangle">

@@ -84,7 +84,7 @@ function About(props) {
                     {/* <button className="qr-code-button button is-danger" onClick={() => setShowQR(false)}>Ẩn mã QR</button> */}
                 </div> : <div className="qr-code">
                     <img src=".\qr-code-hide.png" alt="qr-code" width="280" />
-                    <button className="qr-code-button button is-info" onClick={() => setShowQR(true)}>Hiện mã QR</button>
+                    <button className="qr-code-button button is-info is-light" onClick={() => setShowQR(true)}>Xem mã QR</button>
                 </div>}
             </div>
             <div className="column card content mx-4 mb-4 p-5">
@@ -95,7 +95,7 @@ function About(props) {
                     <li>Liên hệ: <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">Facebook</a> hoặc <a href="https://zalo.me/0357232898" target="_blank" rel="noreferrer">Zalo</a> để góp ý hoặc báo lỗi</li>
                     <li>Đọc truyện chế TS mình làm từ thời Asiasoft <a href="https://drive.google.com/drive/folders/1iJRv72SGp-39JBFN4zr22irrvqvEV3FR?usp=drive_link" target="_blank" rel="noreferrer">ở đây</a></li>
                     <li>Xem hướng dẫn bắt Ba Đậu Yêu <a href="https://www.youtube.com/watch?v=L_1hVpazuVU" target="_blank" rel="noreferrer">ở đây</a></li>
-                    <li>Trang web chỉ có giá trị tham khảo</li>
+                    <li>Xin lưu ý trang web này chỉ có giá trị tham khảo</li>
                 </ul>
                 <img src=".\screenshot.png" alt="screenshot" width="300" />
             </div>
