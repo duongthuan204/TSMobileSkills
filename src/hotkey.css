@@ -1,0 +1,185 @@
+.skill-overlay {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0.8;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.hotkey-skill:has(.skill-overlay:active) .skill-item img {
+  transform: scale(1.1);
+}
+
+.circle-button {
+  position: relative;
+  width: 33px;
+  height: 33px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 35% 25%, #e9e9ff 0%, #b8b8f5 35%, #8686e0 65%, #6a6ad0 100%);
+  border: 2px solid #cfcfee;
+  box-shadow:
+    0 0 3px 3px rgba(95, 95, 174, 0.45),
+    0 3px 3px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -6px 10px rgba(60, 60, 150, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.08s ease, box-shadow 0.08s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.circle-button:active,
+.circle-button.is-active {
+  background:
+    radial-gradient(circle at 65% 75%, #bebeff 0%, #b8b8f5 35%, #8686e0 65%, #6a6ad0 100%);
+  box-shadow:
+    0 0 3px 3px rgba(95, 95, 174, 0.45),
+    inset 0 4px 10px rgba(30, 30, 90, 0.55),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.circle-button::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 15%;
+  width: 55%;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.circle-button:active::before,
+.circle-button.is-active::before {
+  opacity: 0;
+}
+
+.cross {
+  position: relative;
+  width: 46%;
+  height: 46%;
+  z-index: 1;
+  background: linear-gradient(180deg, #2f3bc2 0%, #5462e0 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.cross.minus {
+  height: 15%;
+}
+
+.cross.plus {
+  clip-path: polygon(34% 0%, 66% 0%, 66% 34%,
+      100% 34%, 100% 66%, 66% 66%,
+      66% 100%, 34% 100%, 34% 66%,
+      0% 66%, 0% 34%, 34% 34%);
+}
+
+.banner-logo {
+  margin: 20px 0;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  opacity: 0.6;
+  transform: scale(0.9);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.banner-logo img {
+  width: 50px;
+  height: 50px;
+}
+
+.banner-logo p {
+  text-align: left;
+  margin-left: 8px;
+  background: linear-gradient(-90deg, #4d96ff, #a06bff, #ff6b6b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.web-domain {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.hotkey-panel-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.hotkey-panel {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  width: min(565px, calc(100% - 20px));
+  /* background: linear-gradient(180deg, #6a6ad0, #473d8b); */
+  background-color: rgb(71, 61, 139, 0.85);
+  padding: 10px;
+  width: fit-content;
+  min-height: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #EFF7F7;
+  outline: 1px solid #42696B;
+  margin: 0 12px;
+}
+
+.hotkey-skill {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  /* không cho div con bị co lại khi hết chỗ */
+  /* box-shadow:
+        0 0 0 1px #3f1f70,
+        0 0 0 3px #5249ad,
+        0 0 0 4px #e7d7ff;
+        border-radius: 2px; */
+}
+
+.game-panel {
+  background-color: white;
+  box-shadow:
+    0 0 0 1px #21699c,
+    0 0 0 2px #63d19c,
+    0 0 0 3px #63a2c6,
+    0 0 0 4px #ffffff,
+    0 0 0 5px #8ce7bd,
+    0 0 0 10px #4a3c9c,
+    0 0 0 11px #080010,
+    0 0 0 12px #42696b,
+    0 0 0 13px #ebf1f7,
+    0 0 0 14px #080010;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .hotkey-panel {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

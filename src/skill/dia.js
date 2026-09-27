@@ -13,18 +13,14 @@ class Dia extends React.Component {
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Nham Quái (+<b>{skills['nhamquai'].pointRequire}</b>&nbsp;viên)
                     </div> : ''} */}
                     <h1 className="level-1 rectangle">
-                        <Skill type="dia" skill={skills['muada']} update={update} />
+                        <Skill skill={skills['muada']} update={update} />
                         {he === 'dia' && ngoc > 1 ? <div className="summon-skill">
-                            <div class="button is-warning is-light is-rounded is-medium">
-                                <span class="icon">
-                                    <img src="./assets/icon/ngoc-dia.png" alt="trieu-goi"></img>
-                                </span>
-                                <span className="bold">{ngoc}</span>
-                                <span className="bold is-size-7">&nbsp;(+{skills['nhamquai'].pointRequire})</span>
-                            </div>
+                            <img src="./assets/icon/ngoc-dia.png" alt="trieu-goi"></img>
+                            <span>{ngoc}</span>
+                            <span>(+{skills['nhamquai'].pointRequire})</span>
                         </div> : ''}
                         {he === 'dia' ? <div className="skill-logo">
-                            <Skill type="dia" skill={skills['nhamquai']} update={update} />
+                            <Skill skill={skills['nhamquai']} update={update} />
                         </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-dia.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">
@@ -60,38 +56,38 @@ function Dia1(props) {
     return (
         <li>
             {/* <h1 className="level-2 rectangle is-mobi">
-                <Skill type="dia" skill={skills['muada']} update={update} />
+                <Skill skill={skills['muada']} update={update} />
             </h1> */}
             <h1 className="level-2 rectangle">
-                <Skill type="dia" skill={skills['cambay']} update={update} />
+                <Skill skill={skills['cambay']} update={update} />
             </h1>
             <h1 className="level-1 rectangle">
-                <Skill type="dia" skill={skills['nemda']} update={update} />
+                <Skill skill={skills['nemda']} update={update} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
                     <h1 className="level-1 rectangle">
-                        <Skill type="dia" skill={skills['phisa']} update={update} />
+                        <Skill skill={skills['phisa']} update={update} />
                     </h1>
                     <ol className="level-2-wrapper">
                         <li>
                             <h1 className="rectangle">
-                                <Skill type="dia" skill={skills['vanma']} update={update} />
+                                <Skill skill={skills['vanma']} update={update} />
                             </h1>
                         </li>
                         <li>
                             <h1 className="rectangle">
-                                <Skill type="dia" skill={skills['longtroi']} update={update} />
+                                <Skill skill={skills['longtroi']} update={update} />
                             </h1>
                         </li>
                     </ol>
                 </li>
                 <li>
                     <h1 className="level-2 rectangle">
-                        <Skill type="dia" skill={skills['dalan']} update={update} />
+                        <Skill skill={skills['dalan']} update={update} />
                     </h1>
                     <h1 className="rectangle">
-                        <Skill type="dia" skill={skills['thaison']} update={update} />
+                        <Skill skill={skills['thaison']} update={update} />
                     </h1>
                 </li>
             </ol>
@@ -104,38 +100,38 @@ function Dia2(props) {
     return (
         <li>
             {/* <h1 className="level-2 rectangle is-mobi">
-                <Skill type="dia" skill={skills['muada']} update={update} />
+                <Skill skill={skills['muada']} update={update} />
             </h1> */}
             <h1 className="level-2 rectangle">
-                <Skill type="dia" skill={skills['loimoc']} update={update} />
+                <Skill skill={skills['loimoc']} update={update} />
             </h1>
             <h1 className="level-2 rectangle">
-                <Skill type="dia" skill={skills['caytinh']} update={update} />
+                <Skill skill={skills['caytinh']} update={update} />
             </h1>
             <h1 className="level-1 rectangle">
-                <Skill type="dia" skill={skills['dianha']} update={update} />
+                <Skill skill={skills['dianha']} update={update} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
                     <h1 className="level-1 rectangle">
-                        <Skill type="dia" skill={skills['ketgioi']} update={update} />
+                        <Skill skill={skills['ketgioi']} update={update} />
                     </h1>
                     <ol className="level-2-wrapper">
                         <li>
                             <h1 className="rectangle">
-                                <Skill type="dia" skill={skills['kinh']} update={update} />
+                                <Skill skill={skills['kinh']} update={update} />
                             </h1>
                         </li>
                         <li>
                             <h1 className="rectangle">
-                                <Skill type="dia" skill={skills['giaikinh']} update={update} />
+                                <Skill skill={skills['giaikinh']} update={update} />
                             </h1>
                         </li>
                     </ol>
                 </li>
                 <li>
                     <h1 className="rectangle">
-                        <Skill type="dia" skill={skills['giaikg']} update={update} />
+                        <Skill skill={skills['giaikg']} update={update} />
                     </h1>
                 </li>
             </ol>

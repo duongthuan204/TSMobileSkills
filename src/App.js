@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Head from './layout/head'
-import Main from './layout/main'
+import Head from './layout/head';
+import Main from './layout/main';
 import About from './layout/about';
-import Dialog from './layout/dialog'
-import Model from './skill/model'
+import Dialog from './layout/dialog';
+import Model from './skill/model';
 
 class App extends React.Component {
 
@@ -21,19 +21,16 @@ class App extends React.Component {
       quick: data.quick,
       ngoc: data.ngoc,
       openAbout: false,
-      learn: Array(8).fill(null)
+      learn: Array(8).fill(null),
+      hotkey: Array(8).fill(null),
+      hotkeySelect: null,
+      selectSkill: null
     }
-
-    // const test1 = { name: 'liettram', type: 'hoa' }
-    // const test2 = { name: 'chandien', type: 'phong' }
-    // const test3 = { name: 'giaithuat', type: 'thuy' }
-    // const { learn } = this.state
-    // learn[0] = test1
-    // learn[1] = test2
-    // learn[2] = test3
-    // this.setState({ learn: learn })
-
   }
+
+  // componentDidMount() {
+  //   this.setState((prev) => ({ hotkey: prev.hotkey.with(0, 'bachhong') }))
+  // }
 
   // checkMobile() {
   //   return (/Mobi|Mobile|Android|iPhone|iPad/i.test(navigator.userAgent))
@@ -58,6 +55,20 @@ class App extends React.Component {
 
   closeAboutPage = () => {
     this.setState({ openAbout: false })
+  }
+
+  setHotKeySelect = value => {
+    this.setState({ hotkeySelect: value })
+  }
+
+  setHotKey = (index, value) => {
+    this.setState((prev) => ({
+      hotkey: prev.hotkey.with(index, value)
+    }))
+  }
+
+  setSelectSkill = value => {
+    this.setState({ selectSkill: value })
   }
 
   updateHe = value => {
@@ -180,8 +191,16 @@ class App extends React.Component {
   }
 
   updateSkill = (id, doublePoint, type, isBall, learnSlot, isDelete) => {
-    let { diem, learn, ball, skills, quick } = this.state
+    let { diem, learn, ball, skills, quick, hotkeySelect, selectSkill } = this.state
+    if (selectSkill !== id) {
+      this.setSelectSkill(id)
+      return
+    }
     let s = skills[id]
+    if (hotkeySelect !== null) {
+      this.setHotKeySelect(id)
+      return
+    }
     if (s.skillRequire === 'trieugoi') {
       this.updateSummonSKills(id, isDelete)
       return
@@ -219,7 +238,15 @@ class App extends React.Component {
     for (var s in skills) {
       skills[s].point = 0
     }
-    this.setState({ skills: skills, diem: 0, learn: Array(8).fill(null), ball: 0, ngoc: 0 })
+    this.setState({
+      skills: skills,
+      diem: 0,
+      learn: Array(8).fill(null),
+      hotkey: Array(8).fill(null),
+      hotkeySelect: null,
+      ball: 0,
+      ngoc: 0
+    })
   }
 
   render() {
@@ -227,7 +254,8 @@ class App extends React.Component {
       <div>
         <Head he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} ngoc={this.state.ngoc} updateHe={this.updateHe} updateNghe={this.updateNghe} resetSkill={this.resetSkill} saveData={this.saveData} openAboutPage={this.openAboutPage} isLock={this.state.isLock} />
         <Dialog isLock={this.state.isLock} />
-        {this.state.openAbout ? <About closeAboutPage={this.closeAboutPage} /> : <Main he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} learn={this.state.learn} ball={this.state.ball} ngoc={this.state.ngoc} skills={this.state.skills} updateSkill={this.updateSkill} />}
+        {this.state.openAbout ? <About closeAboutPage={this.closeAboutPage} /> :
+          <Main he={this.state.he} nghe={this.state.nghe} diem={this.state.diem} learn={this.state.learn} ball={this.state.ball} ngoc={this.state.ngoc} skills={this.state.skills} updateSkill={this.updateSkill} hotkey={this.state.hotkey} setHotKey={this.setHotKey} hotkeySelect={this.state.hotkeySelect} setHotKeySelect={this.setHotKeySelect} />}
       </div>
     );
   }

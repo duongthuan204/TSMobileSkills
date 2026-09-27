@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Skill from './skill';
+import HotkeyPanel from './hotkey';
 import '../tree-ts.css';
 import ReactTooltip from 'react-tooltip';
 
@@ -38,7 +39,7 @@ class TaiSinh extends React.Component {
     }
 
     render() {
-        const { he, nghe, learn, ball, skills, update } = this.props
+        const { he, nghe, learn, ball, skills, update, hotkey } = this.props
         const { showPanel, selectIndex } = this.state
         const listNghe = this.getListNghe(nghe)
         const slotNghe = [skills[listNghe[0]].point > 0, skills[listNghe[1]].point > 0, skills[listNghe[2]].point > 0, skills[listNghe[3]].point > 0]
@@ -47,8 +48,8 @@ class TaiSinh extends React.Component {
                 <div className="skill-panel container">
                     <div className="skill-tree-wrap">
                         <div className="skill-tree">
-                            <div className="button is-warning is-dark is-rounded ball-count">
-                                Ball:&nbsp;<b>{ball}</b>
+                            <div className="button is-dark is-rounded ball-count">
+                                Ball:&nbsp;<span className={'color-' + he}><b>{ball}</b></span>
                             </div>
                             <div className="layer layer--bottom">
 
@@ -89,19 +90,16 @@ class TaiSinh extends React.Component {
                             </div>
 
                             <div className="layer layer--top">
-                                <div className="node node--A"><Skill type="nghe" skill={skills[listNghe[0]]} update={update} learnSlot={0} /></div>
-                                <div className="node node--B"><Skill type="nghe" skill={skills[listNghe[1]]} update={update} learnSlot={1} /></div>
-                                <div className="node node--C"><Skill type="nghe" skill={skills[listNghe[2]]} update={update} learnSlot={2} /></div>
-                                <div className="node node--D"><Skill type="nghe" skill={skills[listNghe[3]]} update={update} learnSlot={3} /></div>
-                                <div className="node node--W"><Skill type="nghe" skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} /></div>
+                                <div className="node node--A"><Skill skill={skills[listNghe[0]]} update={update} learnSlot={0} /></div>
+                                <div className="node node--B"><Skill skill={skills[listNghe[1]]} update={update} learnSlot={1} /></div>
+                                <div className="node node--C"><Skill skill={skills[listNghe[2]]} update={update} learnSlot={2} /></div>
+                                <div className="node node--D"><Skill skill={skills[listNghe[3]]} update={update} learnSlot={3} /></div>
+                                <div className="node node--W"><Skill skill={skills['daichuthien']} update={update} tooltip={'Cần học trước 1 kĩ năng Khí'} /></div>
                             </div>
                         </div>
                     </div>
                     <SelectSkillPanel showPanel={showPanel} setShowPanel={(value) => this.setState({ showPanel: value })} he={he} ball={ball} skills={skills} update={update} tooltip={this.tooltip} learnSlot={selectIndex} />
-                    <div className="banner-logo">
-                        <img src="./assets/icon/banner.png" alt="banner-logo" />
-                    </div>
-                    <HotkeyPanel skills={skills} />
+                    <HotkeyPanel skills={skills} hotkey={hotkey} setHotKey={this.props.setHotKey} hotkeySelect={this.props.hotkeySelect} setHotKeySelect={this.props.setHotKeySelect} />
                 </div>
                 <ReactTooltip id="treeTooltip" place="top" effect="solid" />
             </div>
@@ -110,33 +108,6 @@ class TaiSinh extends React.Component {
 }
 
 export default TaiSinh;
-
-function HotkeySkill(props) {
-    const { type, skill } = props
-    const imgUrl = "./assets/" + type + "/" + skill.id + ".png"
-    return <div className="hotkey-skill">
-        <div className="skill-item" data-tip={skill.name} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
-            <img src={imgUrl} width="50" height="50" alt={skill.id} draggable={false}></img>
-            {skill.id !== 'black' ? <div className="point">{skill.point + 1}</div> : ''}
-        </div>
-    </div>
-}
-
-function HotkeyPanel(props) {
-    const { skills } = props
-    return <div className="hotkey-panel">
-        <HotkeySkill type="hoa" skill={skills['hoatien']} />
-        <HotkeySkill type="hoa" skill={skills['hoitam']} />
-        <HotkeySkill type="phong" skill={skills['lantranh']} />
-        <HotkeySkill type="thuy" skill={skills['bangphong']} />
-        <HotkeySkill type="thuy" skill={skills['hoisinh']} />
-        <HotkeySkill type="nghe" skill={skills['black']} />
-        <HotkeySkill type="nghe" skill={skills['black']} />
-        <HotkeySkill type="nghe" skill={skills['black']} />
-        <HotkeySkill type="nghe" skill={skills['black']} />
-        <HotkeySkill type="nghe" skill={skills['black']} />
-    </div>
-}
 
 function SelectSkillPanel(props) {
     const { showPanel, setShowPanel, he, ball, skills, update, tooltip, learnSlot } = props
@@ -164,12 +135,11 @@ function SelectSkillPanel(props) {
             setSelect(null)
         }
     }
-
     if (ball > 0 && showPanel) {
         return <div className="skill-panel-taisinh">
             <div className="is-inline-block mb-4">
-                {select === null ? <div className="button is-warning is-light is-rounded">Chọn 1 kĩ năng muốn học</div> :
-                    <div className="button is-info is-light is-rounded">Đã chọn kĩ năng&nbsp;<span className="bold">{skills[select[0]].name}</span></div>}
+                {select === null ? <div className="button is-warning is-light is-rounded">Chọn một kĩ năng cho ô này</div> :
+                    <div className="button is-dark is-rounded">Đã chọn kĩ năng&nbsp;<span className={'bold color-' + skills[select[0]].type}>{skills[select[0]].name}</span></div>}
             </div>
             {he !== 'hoa' ? <Dia skills={skills} update={handleUpdate} tooltip={tooltip} learnSlot={learnSlot} /> : ''}
             {he !== 'phong' ? <Thuy skills={skills} update={handleUpdate} tooltip={tooltip} learnSlot={learnSlot} /> : ''}
@@ -178,10 +148,10 @@ function SelectSkillPanel(props) {
             <div className="field mt-4">
                 <div className="control columns is-mobile is-centered">
                     <div className="column is-one-third">
-                        <button class="button is-warning is-fullwidth" onClick={cancelSelect} disabled={select === null}>Chọn lại</button>
+                        <button className="button is-warning is-dark is-fullwidth" onClick={cancelSelect} disabled={select === null}>Chọn lại</button>
                     </div>
                     <div className="column is-one-third">
-                        <button className="button is-info is-fullwidth" onClick={closePanel}>Đã xong</button>
+                        <button className="button is-dark is-fullwidth" onClick={closePanel}>Xong</button>
                     </div>
                 </div>
             </div>
@@ -211,7 +181,7 @@ function SlotSkill(props) {
         }
     }
     if (isLearnt) {
-        return <Skill type={skill.type} skill={skills[skill.name]} update={update} isBall={true} learnSlot={index} />
+        return <Skill skill={skills[skill.name]} update={update} isBall={true} learnSlot={index} />
     } else {
         return <div className="skill-item" onClick={checkLearn}>
             <img src='./assets/nghe/select.png' width="50" height="50" draggable={false} />
@@ -220,13 +190,13 @@ function SlotSkill(props) {
 }
 
 function SkillTooltip(props) {
-    const { type, skill, update, tooltip, learnSlot } = props
+    const { skill, update, tooltip, learnSlot } = props
     const handleUpdate = (...args) => {
         update(...args)
     }
     return (
         <div className="is-inline-block mx-1">
-            <Skill type={type} skill={skill} update={handleUpdate} tooltip={`Cần học ${tooltip(skill.id)}`} isBall={true} learnSlot={learnSlot} />
+            <Skill skill={skill} update={handleUpdate} tooltip={`Cần học ${tooltip(skill.id)}`} isBall={true} learnSlot={learnSlot} />
         </div>
     )
 }
@@ -240,15 +210,15 @@ function Dia(props) {
                     <img className="disable-user-select" src="./assets/nghe/icon_dia.png" width="50" height="50" alt="dia" draggable={false}></img>
                 </div>
                 <div>
-                    <SkillTooltip type="dia" skill={skills['chanba']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                    <SkillTooltip type="dia" skill={skills['honphu']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                    <SkillTooltip type="dia" skill={skills['thietphao']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                    <SkillTooltip type="dia" skill={skills['tinhphao']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['chanba']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['honphu']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['thietphao']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['tinhphao']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
                     <br className="is-mobi" />
-                    <SkillTooltip type="dia" skill={skills['chungtrao']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                    <SkillTooltip type="dia" skill={skills['xungphong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                    <SkillTooltip type="dia" skill={skills['boccam']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                    <SkillTooltip type="dia" skill={skills['vuongsat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['chungtrao']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['xungphong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['boccam']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                    <SkillTooltip skill={skills['vuongsat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
                 </div>
             </div>
         </div>
@@ -263,15 +233,15 @@ function Thuy(props) {
                 <img className="disable-user-select" src="./assets/nghe/icon_thuy.png" width="50" height="50" alt="thuy" draggable={false}></img>
             </div>
             <div>
-                <SkillTooltip type="thuy" skill={skills['thienbang']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="thuy" skill={skills['suongquyen']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="thuy" skill={skills['mathuat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="thuy" skill={skills['camlam']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['thienbang']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['suongquyen']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['mathuat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['camlam']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
                 <br className="is-mobi" />
-                <SkillTooltip type="thuy" skill={skills['giaithuat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="thuy" skill={skills['votuong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="thuy" skill={skills['nhatthiem']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="thuy" skill={skills['lucbangvu']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['giaithuat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['votuong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['nhatthiem']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['lucbangvu']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
             </div>
         </div>
     );
@@ -285,15 +255,15 @@ function Hoa(props) {
                 <img className="disable-user-select" src="./assets/nghe/icon_hoa.png" width="50" height="50" alt="hoa" draggable={false}></img>
             </div>
             <div>
-                <SkillTooltip type="hoa" skill={skills['nhatkich']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="hoa" skill={skills['haohoa']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="hoa" skill={skills['xichlong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="hoa" skill={skills['trieulam']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['nhatkich']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['haohoa']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['xichlong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['trieulam']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
                 <br className="is-mobi" />
-                <SkillTooltip type="hoa" skill={skills['duongviem']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="hoa" skill={skills['phanda']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="hoa" skill={skills['liettram']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="hoa" skill={skills['chanhe']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['duongviem']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['phanda']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['liettram']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['chanhe']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
             </div>
         </div>
 
@@ -308,15 +278,15 @@ function Phong(props) {
                 <img className="disable-user-select" src="./assets/nghe/icon_phong.png" width="50" height="50" alt="phong" draggable={false}></img>
             </div>
             <div>
-                <SkillTooltip type="phong" skill={skills['bangloi']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="phong" skill={skills['thanly']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="phong" skill={skills['phikiem']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="phong" skill={skills['soncuong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['bangloi']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['thanly']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['phikiem']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['soncuong']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
                 <br className="is-mobi" />
-                <SkillTooltip type="phong" skill={skills['huthon']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="phong" skill={skills['loiminh']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="phong" skill={skills['thanthuat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
-                <SkillTooltip type="phong" skill={skills['chandien']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['huthon']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['loiminh']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['thanthuat']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
+                <SkillTooltip skill={skills['chandien']} update={update} tooltip={tooltip} learnSlot={learnSlot} />
             </div>
         </div>
     );

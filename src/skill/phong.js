@@ -13,18 +13,14 @@ class Phong extends React.Component {
                         Cần&nbsp;<b>{ngoc}</b>&nbsp;viên Thanh Long (+<b>{skills['thanhlong'].pointRequire}</b>&nbsp;viên)
                     </div> : ''} */}
                     <h1 className="level-1 rectangle">
-                        <Skill type="phong" skill={skills['nguphong']} update={update} />
+                        <Skill skill={skills['nguphong']} update={update} />
                         {he === 'phong' && ngoc > 1 ? <div className="summon-skill">
-                            <div class="button is-success is-light is-rounded is-medium">
-                                <span class="icon">
-                                    <img src="./assets/icon/ngoc-phong.png" alt="trieu-goi"></img>
-                                </span>
-                                <span className="bold">{ngoc}</span>
-                                <span className="bold is-size-7">&nbsp;(+{skills['thanhlong'].pointRequire})</span>
-                            </div>
+                            <img src="./assets/icon/ngoc-phong.png" alt="trieu-goi"></img>
+                            <span>{ngoc}</span>
+                            <span>(+{skills['thanhlong'].pointRequire})</span>
                         </div> : ''}
                         {he === 'phong' ? <div className="skill-logo">
-                            <Skill type="phong" skill={skills['thanhlong']} update={update} />
+                            <Skill skill={skills['thanhlong']} update={update} />
                         </div> : <div className="skill-logo"><img className="skill-logo-img" src="./assets/icon/logo-phong.png" alt="logo-brand"></img></div>}
                     </h1>
                     <ol className="level-2-wrapper">
@@ -60,33 +56,33 @@ function Phong1(props) {
     return (
         <li>
             {/* <h1 className="level-2 rectangle is-mobi">
-                <Skill type="phong" skill={skills['nguphong']} update={update} />
+                <Skill skill={skills['nguphong']} update={update} />
             </h1> */}
             <h1 className="level-2 rectangle">
-                <Skill type="phong" skill={skills['lantranh']} update={update} />
+                <Skill skill={skills['lantranh']} update={update} />
             </h1>
             <h1 className="level-2 rectangle">
-                <Skill type="phong" skill={skills['anminh']} update={update} />
+                <Skill skill={skills['anminh']} update={update} />
             </h1>
             <h1 className="level-1 rectangle">
-                <Skill type="phong" skill={skills['phanthan']} update={update} />
+                <Skill skill={skills['phanthan']} update={update} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
                     <h1 className="level-1 rectangle">
-                        <Skill type="phong" skill={skills['phongto']} update={update} />
+                        <Skill skill={skills['phongto']} update={update} />
                     </h1>
                 </li>
                 <li>
                     <h1 className="level-1 rectangle">
-                        <Skill type="phong" skill={skills['thunho']} update={update} />
+                        <Skill skill={skills['thunho']} update={update} />
                     </h1>
                 </li>
             </ol>
             <ol className="level-0-wrapper">
                 <li>
                     <h1 className="level-0 rectangle">
-                        <Skill type="phong" skill={skills['nguyenkhi']} update={update} />
+                        <Skill skill={skills['nguyenkhi']} update={update} />
                     </h1>
                 </li>
             </ol>
@@ -99,32 +95,32 @@ function Phong2(props) {
     return (
         <li>
             {/* <h1 className="level-2 rectangle is-mobi">
-                <Skill type="phong" skill={skills['nguphong']} update={update} />
+                <Skill skill={skills['nguphong']} update={update} />
             </h1> */}
             <h1 className="level-2 rectangle">
-                <Skill type="phong" skill={skills['tuyenphong']} update={update} />
+                <Skill skill={skills['tuyenphong']} update={update} />
             </h1>
             <h1 className="level-1 rectangle">
-                <Skill type="phong" skill={skills['cuongphong']} update={update} />
+                <Skill skill={skills['cuongphong']} update={update} />
             </h1>
             <ol className="level-2-wrapper">
                 <li>
                     <h1 className="level-2 rectangle">
-                        <Skill type="phong" skill={skills['huyenkich']} update={update} />
+                        <Skill skill={skills['huyenkich']} update={update} />
                     </h1>
                     <h1 className="level-2 rectangle">
-                        <Skill type="phong" skill={skills['lienkich']} update={update} />
+                        <Skill skill={skills['lienkich']} update={update} />
                     </h1>
                     <h1 className="rectangle">
-                        <Skill type="phong" skill={skills['loankich']} update={update} />
+                        <Skill skill={skills['loankich']} update={update} />
                     </h1>
                 </li>
                 <li>
                     <h1 className="level-2 rectangle">
-                        <Skill type="phong" skill={skills['baophong']} update={update} />
+                        <Skill skill={skills['baophong']} update={update} />
                     </h1>
                     <h1 className="rectangle">
-                        <Skill type="phong" skill={skills['phongcuon']} update={update} />
+                        <Skill skill={skills['phongcuon']} update={update} />
                     </h1>
                 </li>
             </ol>
