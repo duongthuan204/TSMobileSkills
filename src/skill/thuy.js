@@ -1,6 +1,6 @@
 import React from 'react';
 import Skill from './skill';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 class Thuy extends React.Component {
 
@@ -43,7 +43,7 @@ class Thuy extends React.Component {
                         </div>
                     </div>
                 </div> */}
-                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
+                <Tooltip id="treeTooltip" />
             </div>
         );
     }

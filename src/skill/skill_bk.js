@@ -49,7 +49,7 @@ class Skill extends React.Component {
         const typePath = (skill.type).split('-')[0]
         const imgUrl = "./assets/" + typePath + "/" + skill.id + ".png"
         return <div>
-            <div className="skill-item" onClick={() => update(skill.id, doublePoint, skill.type, isBall, learnSlot, false)} data-tip={this.renderTooltip()} data-for="treeTooltip" data-multiline={true} data-effect="solid" data-delay-show="200">
+            <div className="skill-item" onClick={() => update(skill.id, doublePoint, skill.type, isBall, learnSlot, false)} data-tooltip-content={this.renderTooltip()} data-tooltip-id="treeTooltip" data-tooltip-delay-show={100}>
                 <img className={skill.point < 1 ? 'skill-inactived' : ''} src={imgUrl} width="50" height="50" alt={skill.id} draggable={false}></img>
                 {skill.point > 0 ? <div className="point">{skill.point}</div> : <div className="point require">{this.renderPoint()}</div>}
                 {skill.point > 0 ? <button className="delete-skill" onClick={(e) => {e.stopPropagation(); update(skill.id, doublePoint, skill.type, isBall, learnSlot, true)}}>

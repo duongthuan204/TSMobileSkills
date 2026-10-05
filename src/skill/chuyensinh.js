@@ -1,17 +1,9 @@
 import React from 'react';
 import Skill from './skill'
 import HotkeyPanel from './hotkey';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 class ChuyenSinh extends React.Component {
-
-    componentDidMount() {
-        ReactTooltip.rebuild();
-    }
-
-    componentDidUpdate(prevProps) {
-        ReactTooltip.rebuild();
-    }
 
     render() {
         const { skills, update, hotkey } = this.props
@@ -31,7 +23,7 @@ class ChuyenSinh extends React.Component {
                     {this.props.he !== 'thuy' ? <div className="column">
                         <Phong skills={skills} update={update} />
                     </div> : ''}
-                    <ReactTooltip id="treeTooltip" place="top" effect="solid" />
+                    <Tooltip id="treeTooltip" />
                 </div>
                 {this.props.nghe === "khong" ? <HotkeyPanel skills={skills} hotkey={hotkey} setHotKey={this.props.setHotKey} hotkeySelect={this.props.hotkeySelect} setHotKeySelect={this.props.setHotKeySelect} pageCS={true} /> : ''}
             </div>

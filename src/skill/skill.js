@@ -78,11 +78,9 @@ class Skill extends React.Component {
                 className={`skill-item${isActive ? ' active' : ''}`}
                 ref={this.skillRef}
                 onClick={() => this.handleSkillClick()}
-                data-tip={this.renderTooltip()}
-                data-for="treeTooltip"
-                data-multiline={true}
-                data-effect="solid"
-                data-delay-show="200"
+                data-tooltip-content={this.renderTooltip()}
+                data-tooltip-id="treeTooltip"
+                data-tooltip-delay-show={100}
             >
                 {isActive ? <div className="skill-select">
                     <span className="corner tl"></span>

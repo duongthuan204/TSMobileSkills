@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Skill from './skill';
 import HotkeyPanel from './hotkey';
 import '../tree-ts.css';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 class TaiSinh extends React.Component {
 
@@ -12,14 +12,6 @@ class TaiSinh extends React.Component {
             showPanel: false,
             selectIndex: null
         }
-    }
-
-    componentDidMount() {
-        ReactTooltip.rebuild();
-    }
-
-    componentDidUpdate(prevProps) {
-        ReactTooltip.rebuild();
     }
 
     tooltip = (id) => {
@@ -101,7 +93,7 @@ class TaiSinh extends React.Component {
                     <SelectSkillPanel showPanel={showPanel} setShowPanel={(value) => this.setState({ showPanel: value })} he={he} ball={ball} skills={skills} update={update} tooltip={this.tooltip} learnSlot={selectIndex} />
                     <HotkeyPanel skills={skills} hotkey={hotkey} setHotKey={this.props.setHotKey} hotkeySelect={this.props.hotkeySelect} setHotKeySelect={this.props.setHotKeySelect} />
                 </div>
-                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
+                <Tooltip id="treeTooltip" />
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Skill from './skill'
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 class Hoa extends React.Component {
 
@@ -30,7 +30,7 @@ class Hoa extends React.Component {
                         <Hoa2 skills={skills} update={update} />
                     </ol>
                 </div>
-                <ReactTooltip id="treeTooltip" place="top" effect="solid" />
+                <Tooltip id="treeTooltip" />
             </div>
         );
     }

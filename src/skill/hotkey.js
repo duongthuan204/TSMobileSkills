@@ -86,7 +86,7 @@ function HotkeySkill(props) {
     const { skill } = props
     const typePath = (skill.type).split('-')[0]
     const imgUrl = "./assets/" + typePath + "/" + skill.id + ".png"
-    return <div className="skill-item" data-tip={skill.name} data-for="treeTooltip" data-effect="solid" data-delay-show="200">
+    return <div className="skill-item" data-tooltip-content={skill.name} data-tooltip-id="treeTooltip" data-tooltip-delay-show={100}>
         <img className={skill.point < 1 ? 'skill-inactived' : ''} src={imgUrl} width="50" height="50" alt={skill.id} draggable={false}></img>
         {skill.point > 0 ? <div className="point">{skill.point}</div> : ''}
     </div>
