@@ -33,6 +33,10 @@ function About(props) {
     const handleBlur = (value, setter) => () => {
         setPointCS(0)
         setPointTS(0)
+        // if (value === '') {
+        //     setter(200)
+        //     return
+        // }
         const num = Number(value);
         if (num < 120) {
             setter(120)
@@ -84,13 +88,14 @@ function About(props) {
                 </div>}
             </div>
             <div className="column card content mx-4 mb-4 p-5">
+                {/* <h3 className="has-text-centered">Giới thiệu</h3> */}
                 <ul>
                     <li>Tác giả: <span className="bold">Dương Thuận</span></li>
                     <li>Quân đoàn Exotic - Server Tào Tháo (TS Origin VTC)</li>
-                    <li>Trang web chỉ có giá trị tham khảo</li>
-                    <li>Liên hệ góp ý hoặc báo lỗi <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">ở đây</a></li>
+                    <li>Liên hệ: <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">Facebook</a> hoặc <a href="https://zalo.me/0357232898" target="_blank" rel="noreferrer">Zalo</a> để góp ý hoặc báo lỗi</li>
                     <li>Đọc truyện chế TS mình làm từ thời Asiasoft <a href="https://drive.google.com/drive/folders/1iJRv72SGp-39JBFN4zr22irrvqvEV3FR?usp=drive_link" target="_blank" rel="noreferrer">ở đây</a></li>
                     <li>Xem hướng dẫn bắt Ba Đậu Yêu <a href="https://www.youtube.com/watch?v=L_1hVpazuVU" target="_blank" rel="noreferrer">ở đây</a></li>
+                    <li>Xin lưu ý trang web này chỉ có giá trị tham khảo</li>
                 </ul>
                 <img src=".\screenshot.png" alt="screenshot" width="300" />
             </div>

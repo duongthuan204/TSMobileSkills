@@ -13,13 +13,6 @@
     /* IE/Edge cũ */
 }
 
-.round-button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
 .skill-panel {
     text-align: center;
     max-width: 800px !important;
@@ -176,50 +169,28 @@ a.about:hover {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* .skill-item>img:active {
-    transform: scale(1.1);
-} */
-
-.skill-item:active {
+.skill-item>img:active {
     transform: scale(1.1);
 }
 
-.skill-select {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-}
-
-.corner {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border: 4px solid #FFC446;
-}
-
-.tl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-.tr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
-.bl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
-.br { bottom: -4px; right: -4px; border-left: none; border-top: none; }
-
-.skill-item.active .delete-skill {
+.skill-item:hover .delete-skill {
     opacity: 1;
-    visibility: visible;
+    visibility: visible
 }
 
-.skill-panel-taisinh .delete-skill {
-    opacity: 0 !important;
-    visibility: hidden !important;
+.skill-panel-taisinh .skill-item:hover .delete-skill {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .delete-skill {
     width: 21px;
     height: 21px;
-    top: -7px;
-    right: -7px;
+    top: -8px;
+    right: -8px;
     user-select: none;
     position: absolute;
-    border-radius: 20%;
+    border-radius: 50%;
     background: rgba(0, 0, 0, 0.7);
     border: none;
     display: flex;
@@ -242,27 +213,12 @@ a.about:hover {
     height: 100%;
     z-index: 10;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1.15rem;
-    font-weight: 500;
-    padding-left: 5px;
 }
 
-.summon-skill img {
-    width: 36px;
-    height: 36px;
-}
-
-.summon-skill span:first-of-type {
-    padding-left: 3px;
-    padding-right: 3px;
-}
-
-.summon-skill span:last-child {
-    font-size: 0.85rem;
-    color: darkgray;
-}
+/* .summon-skill img {
+    width: 30px;
+    height: 30px;
+} */
 
 .skill-logo {
     position: absolute;
@@ -439,6 +395,41 @@ a.about:hover {
     left: 0;
 }
 
+.banner-logo {
+    margin: 20px 0;
+}
+
+.banner-logo img {
+    width: 220px;
+    opacity: 0.6;
+}
+
+.hotkey-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #403C90;
+    padding: 5px;
+    gap: 5px;
+    width: 100%;
+    max-width: 560px;
+    min-height: 50px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 3px;
+    border: 1px solid #EFF7F7;
+    outline: 1px solid #42696B;
+}
+
+.hotkey-skill {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    /* không cho div con bị co lại khi hết chỗ */
+}
+
 @keyframes banner-in {
     from {
         max-height: 0;
@@ -479,23 +470,6 @@ a.about:hover {
     }
 }
 
-.no-border {
-    box-shadow: none;
-    border: none;
-}
-
-.game-border {
-    background-color: white;
-    box-shadow:
-        0 0 0 1px #21699c,
-        0 0 0 2px #63d19c,
-        0 0 0 3px #63a2c6,
-        0 0 0 4px #ffffff,
-        0 0 0 5px #8ce7bd;
-    border-radius: 3px;
-    padding: 10px;
-}
-
 @media screen and (max-width: 1024px) {
     .is-desktop {
         display: none !important
@@ -527,7 +501,6 @@ a.about:hover {
         transform: scale(0.8);
         transform-origin: top left;
         width: 125%;
-        /* zoom: 0.8; */
     }
 
     .skill-logo-img {
@@ -599,18 +572,12 @@ a.about:hover {
         background: rgba(255, 0, 0, 0.8);
     }
 
-    .skill-chuyensinh .skill-panel {
-        margin-bottom: -40px;
-    }
-
-    .chuyensinh-page .hotkey-page {
-        transform: scale(0.8);
-        transform-origin: top center;
-    }
-
-    .skill-panel-taisinh .button,
-    .ball-count {
+    .skill-panel-taisinh .control button {
         font-size: 1.1rem;
+    }
+
+    .hotkey-panel {
+        max-width: 285px;
     }
 }
 

@@ -76,9 +76,9 @@ class Main extends React.Component {
             case 'phong':
                 return <Phong skills={skills}  he={this.props.he} ngoc={this.props.ngoc} update={updateSkill} />
             case 'cs':
-                return <ChuyenSinh he={this.props.he} nghe={this.props.nghe} skills={skills} update={updateSkill} hotkey={this.props.hotkey} setHotKey={this.props.setHotKey} hotkeySelect={this.props.hotkeySelect} setHotKeySelect={this.props.setHotKeySelect} />
+                return <ChuyenSinh he={this.props.he} nghe={this.props.nghe} skills={skills} update={updateSkill} />
             case 'ts':
-                return <TaiSinh he={this.props.he} nghe={this.props.nghe} learn={this.props.learn} ball={this.props.ball} skills={skills} update={updateSkill} hotkey={this.props.hotkey} setHotKey={this.props.setHotKey} hotkeySelect={this.props.hotkeySelect} setHotKeySelect={this.props.setHotKeySelect} />
+                return <TaiSinh he={this.props.he} nghe={this.props.nghe} learn={this.props.learn} ball={this.props.ball} skills={skills} update={updateSkill} />
             default:
                 return ''
         }
