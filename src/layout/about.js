@@ -1,7 +1,6 @@
 function About() {
     return (
         <div className="about box content mx-4 mb-4">
-            <img src=".\screenshot.png" alt="thuanduong" width="300" />
             <h5>Giới thiệu</h5>
             <ul>
                 <li>Tác giả: <span className="bold">Dương Minh Thuận</span></li>

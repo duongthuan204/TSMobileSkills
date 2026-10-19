@@ -17,7 +17,6 @@ class Head extends React.Component {
                 <div className="navbar-brand">
                     <div className="navbar-item is-desktop logo-brand">
                         <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer"><img src="./logo.png" alt="logo" /></a>
-                        <a href="https://www.facebook.com/shunbrvt" target="_blank" rel="noreferrer">by duongthuan</a>
                     </div>
                     <div className="navbar-item">
                         {/* <div className="mx-1">
